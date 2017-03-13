@@ -5,5 +5,5 @@ sync:
 	pdflatex onderzoek.tex
 	cd ..
 	git add .
-	git commit -m "New version of research compiled and synced `date`"
+	git commit
 	git push origin master
