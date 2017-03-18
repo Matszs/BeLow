@@ -13,10 +13,34 @@ void BleSerial::setupAsDetector() {
 }
 
 void BleSerial::setMaster() {
-	
+	waitUntillBleIsActive();
+
+	setConf("IMME1");
+	setConf("ROLE1"); // set to Central
+	setConf("SHOW1");
+	setConf("RESET");
+
+	delay(1000);
 }
 
 void BleSerial::setSlave() {
+	waitUntillBleIsActive();
+
+	setConf("ROLE0"); // set to Peripheral 
+	setConf("MARJ0x1337"); // set major
+	setConf("MINO0x1337"); // set minor
+	setConf("ADVI5"); // set interval
+	setConf("NAMEBeLowBeacon");
+
+	setConf("ADTY3"); // advertising type (3 = advertising only)
+	setConf("IBEA1"); // work as iBeacon
+	setConf("DELO2"); // iBeacon deploy mode (2 = broadcast only)
+
+	// TESTING!!!
+	setConf("PWRM1"); // auto sleep OFF
+	setConf("RESET");
+
+	delay(1000);
 	
 }
 
@@ -28,14 +52,17 @@ void BleSerial::sleep() {
 	
 }
 
-void BleSerial::detectBeacons(void (*callback)(iBeaconData_t beacon), uint16_t maxTimeToSearch) {
-
+void BleSerial::waitUntillBleIsActive() {
 	// Waiting before the BLE module is working
 	String isWorking = sendCmd("AT");
 	while(isWorking.indexOf("OK") != 0) {
 		delay(300);
 		isWorking = sendCmd("AT");
 	}
+}
+
+void BleSerial::detectBeacons(void (*callback)(iBeaconData_t beacon), uint16_t maxTimeToSearch) {
+	waitUntillBleIsActive();
 
 	// Start finding nodes
 	String response = getConf("DISI");
@@ -62,7 +89,7 @@ void BleSerial::detectBeacons(void (*callback)(iBeaconData_t beacon), uint16_t m
 			}
 		}
 
-		//HwSerial->println(data);
+		HwSerial->println(data);
 
 		uint16_t j = 0;
 		byte deviceCounter;

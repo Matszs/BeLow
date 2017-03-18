@@ -10,7 +10,7 @@ void onBeaconFound(iBeaconData_t beacon) {
 
 void setup() {
   Serial.begin(9600);
-  //bleSerial.setupAsDetector();
+  bleSerial.setMaster();
   bleSerial.detectBeacons(&onBeaconFound, 10000); // max time to search
 }
 

@@ -67,6 +67,7 @@ private:
 	uint8_t hexStringToByte(String str);
 	char nibbleToHexCharacter(uint8_t nibble);
 	uint8_t hexCharacterToNibble(char hex);
+	void waitUntillBleIsActive();
 
 public:
 	BleSerial(SoftwareSerial * softwareSerial, HardwareSerial * hardwareSerial);
