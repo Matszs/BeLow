@@ -78,6 +78,10 @@ public:
 	void setMaster();
 	void setSlave();
 	void factoryReset();
+  void setMinor(int value);
+  void setMajor(int value);
+  void startAdvertising();
+  void stopAdvertising();
 
 };
 
