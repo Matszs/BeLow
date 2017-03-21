@@ -52,6 +52,10 @@ void BleSerial::sleep() {
 	
 }
 
+void BleSerial::factoryReset() {
+	setConf("RENEW");
+}
+
 void BleSerial::waitUntillBleIsActive() {
 	// Waiting before the BLE module is working
 	String isWorking = sendCmd("AT");
@@ -167,9 +171,9 @@ String BleSerial::sendCmd(String cmd) {
 }
 
 int16_t BleSerial::getFreeRAM() {
-	extern int16_t __heap_start, *__brkval;
+	extern uintptr_t __heap_start, *__brkval;
 	int16_t v;
-	return (int16_t) &v - (__brkval == 0 ? (int16_t) &__heap_start : (int16_t) __brkval);
+	return (uintptr_t) &v - (__brkval == 0 ? (uintptr_t) &__heap_start : (uintptr_t) __brkval);
 }
 
 String BleSerial::byteToHexString(uint8_t hex) {

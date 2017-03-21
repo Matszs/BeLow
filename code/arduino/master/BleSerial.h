@@ -77,6 +77,7 @@ public:
 	void wake();
 	void setMaster();
 	void setSlave();
+	void factoryReset();
 
 };
 
