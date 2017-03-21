@@ -5,32 +5,19 @@ SoftwareSerial softwareSerial(2, 3);
 BleSerial bleSerial(&softwareSerial, &Serial);
 
 void onBeaconFound(iBeaconData_t beacon) {
-  Serial.println(beacon.major);
+  if(beacon.uuid == "00001338B64445208F0C720EAF059935") {
+    Serial.print("Beacon found: ");
+    Serial.println(beacon.major);
+  }
 }
 
 void setup() {
-  pinMode(A0, INPUT);
   Serial.begin(9600);
-  // SLAVE
-  bleSerial.setSlave();
-  // MASTRER
-  //bleSerial.setMaster();
-  //bleSerial.detectBeacons(&onBeaconFound, 10000); // max time to search
-}
-
-void advertise(int major) {
-  bleSerial.setMajor(major);
-  bleSerial.startAdvertising();
-  delay(5000);
-  bleSerial.stopAdvertising();
+  bleSerial.setMaster();
 }
 
 void loop() {
+  bleSerial.detectBeacons(&onBeaconFound, 10000); // max time to search
 
-  int LDRvalue = analogRead(A0);
-  if(LDRvalue < 200) {
-    advertise(LDRvalue);
-  }
-
-  delay(1000);
+  delay(3000);
 }
