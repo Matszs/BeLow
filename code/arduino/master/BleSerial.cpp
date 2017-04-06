@@ -24,44 +24,44 @@ void BleSerial::setMaster() {
 }
 
 void BleSerial::setSlave() {
-  HwSerial->println("> Set slave");
-  
-  //HwSerial->println(setConf("RENEW"));
+	HwSerial->println("> Set slave");
 
-  //return;
-  
+	//HwSerial->println(setConf("RENEW"));
+
+	//return;
+
 	waitUntillBleIsActive();
   
 	HwSerial->println(setConf("ROLE0")); // set to Peripheral 
-  delay(100);
-  HwSerial->println(setConf("IBE000001338"));
-  delay(100);
+	delay(100);
+	HwSerial->println(setConf("IBE000001338"));
+	delay(100);
 	HwSerial->println(setConf("MARJ0x1337")); // set major
-  delay(100);
+	delay(100);
 	HwSerial->println(setConf("MINO0x1337")); // set minor
-  delay(100);
+	delay(100);
 	HwSerial->println(setConf("ADVI5")); // set interval
-  delay(100);
+	delay(100);
 	HwSerial->println(setConf("NAMEBeLowBeacon"));
-  delay(100);
+	delay(100);
 
 	HwSerial->println(setConf("ADTY3")); // advertising type (3 = advertising only)
-  delay(100);
+	delay(100);
 	HwSerial->println(setConf("IBEA1")); // work as iBeacon
-  delay(100);
+	delay(100);
 	HwSerial->println(setConf("DELO2")); // iBeacon deploy mode (2 = broadcast only)
-  delay(100);
+	delay(100);
 
 	HwSerial->println(setConf("PWRM1")); // auto sleep ON
-  delay(100);
-  HwSerial->println(setConf("ROLE1")); // set to Peripheral 
-  delay(100);
+	delay(100);
+	HwSerial->println(setConf("ROLE1")); // set to Peripheral 
+	delay(100);
 	HwSerial->println(setConf("RESET"));
 
 	delay(1000);
 
-  waitUntillBleIsActive();
-  HwSerial->println("> Ending set slave");
+	waitUntillBleIsActive();
+	HwSerial->println("> Ending set slave");
 }
 
 void BleSerial::setMinor(int value) {
