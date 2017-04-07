@@ -1,16 +1,17 @@
-#include <SoftwareSerial.h>
 #include "BleSerial.h"
 
-SoftwareSerial softwareSerial(2, 3);
-BleSerial bleSerial(&softwareSerial, &Serial);
+BleSerial bleSerial(&Serial2, &SerialUSB);
 
 void onBeaconFound(iBeaconData_t beacon) {
   Serial.println(beacon.major);
 }
 
 void setup() {
+  pinMode(VCC_SW, OUTPUT); // fully enable grove shield
+  digitalWrite(VCC_SW, HIGH); // fully enable grove shield
+  
   pinMode(A0, INPUT);
-  Serial.begin(9600);
+  SerialUSB.begin(9600);
   // SLAVE
   bleSerial.setSlave();
   // MASTRER
@@ -26,6 +27,8 @@ void advertise(int major) {
 }
 
 void loop() {
+
+  SerialUSB.println("vis");
 
   int LDRvalue = analogRead(A0);
   if(LDRvalue < 200) {

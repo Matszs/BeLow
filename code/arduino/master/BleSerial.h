@@ -4,7 +4,6 @@
 
 #define BleSerial_h
 #include <Arduino.h>
-#include <SoftwareSerial.h>
 
 #define CMD_TIMEOUT 800
 
@@ -56,8 +55,8 @@ private:
 	static const uint16_t MIN_RAM = 253; // in bytes -> keep the RAM > 200 to prevent bugs!
 
 
-	SoftwareSerial * BLESerial;
-	HardwareSerial * HwSerial;
+	Uart * BLESerial;
+	Serial_ * HwSerial;
 	bool setConf(String cmd);
 	String getConf(String cmd);
 	String getConf(String cmd, boolean formatCmd, boolean returnAnswer);
@@ -70,7 +69,7 @@ private:
 	void waitUntillBleIsActive();
 
 public:
-	BleSerial(SoftwareSerial * softwareSerial, HardwareSerial * hardwareSerial);
+	BleSerial(Uart * softwareSerial, Serial_ * hardwareSerial);
 	void setupAsDetector();
 	void detectBeacons(void (*callback)(iBeaconData_t beacon), uint16_t maxTimeToSearch);
 	void sleep();

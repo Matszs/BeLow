@@ -1,6 +1,6 @@
 #include "BleSerial.h"
 
-BleSerial::BleSerial(SoftwareSerial * softwareSerial, HardwareSerial * hardwareSerial){
+BleSerial::BleSerial(Uart * softwareSerial, Serial_ * hardwareSerial){
 	HwSerial = hardwareSerial;
 	BLESerial = softwareSerial;
 	BLESerial->begin(9600);
@@ -134,7 +134,7 @@ void BleSerial::detectBeacons(void (*callback)(iBeaconData_t beacon), uint16_t m
 		String data = "";
 		String uuidHex = "";
 		bool timeout = false;
-    bool hashtag = false;
+		bool hashtag = false;
 		uint32_t startMillis_BLE_total = millis();
 
 		int16_t freeBytes = getFreeRAM() - MIN_RAM;
@@ -149,11 +149,12 @@ void BleSerial::detectBeacons(void (*callback)(iBeaconData_t beacon), uint16_t m
 			if ((millis() - startMillis_BLE_total) >= maxTimeToSearch) {
 				timeout = true;
 				HwSerial->print("*");
-        hashtag = true;
+				hashtag = true;
 			}
 		}
-    if(hashtag)
-      HwSerial->println();
+
+		if(hashtag)
+			HwSerial->println();
 
 		//HwSerial->println(data);
 
@@ -207,7 +208,7 @@ String BleSerial::sendCmd(String cmd) {
 	BLESerial->print(cmd);
 
 	/* get response */
-  boolean hashtag = false;
+	boolean hashtag = false;
 	uint32_t startMillis_BLE = millis();
 	while ((response.indexOf("OK") < 0 || BLESerial->available() || waitForMore) && !failed) {
 		if (BLESerial->available()) {
@@ -223,16 +224,14 @@ String BleSerial::sendCmd(String cmd) {
 			failed = true;
 			response = "error";
 			HwSerial->print("#");
-      hashtag = true;
+			hashtag = true;
 		}
 	}
+
   if(hashtag)
     HwSerial->println();
-
 	BLESerial->flush();
-
 	response.trim();
-
 	return response;
 }
 
