@@ -1,3 +1,9 @@
+#include "rn2xx3.h"
+
+#define DevID "14203842"
+#define NwkSKey "e37001af062ed04f193a12a7eccecee1"
+#define AppSkey "5e9139972fe9767cb317fd8525a0982b"
+
 static const uint8_t DEFAULT_RESPONSE_LENGTH     = 8;          // in characters
 static const uint16_t COMMAND_TIMEOUT_TIME       = 100;        // in ms (discovered empirically)
 static const uint16_t DELAY_AFTER_HW_RESET_BLE   = 300;        // in ms (discovered empirically)
@@ -5,6 +11,8 @@ static const uint16_t DELAY_AFTER_SW_RESET_BLE   = 900;        // in ms (discove
 
 static const uint16_t DEFAULT_DETECTION_TIME     = 5000;       // in ms
 static const uint16_t MIN_RAM = 253; // in bytes -> keep the RAM > 200 to prevent bugs!
+
+rn2xx3 myLora(Serial1);
 
 typedef enum : uint8_t {
   INTERV_100MS  = 0,
@@ -35,21 +43,26 @@ void onBeaconFound(iBeaconData_t beacon) {
   if(beacon.uuid == "00001338B64445208F0C720EAF059935") {
     SerialUSB.print("Beacon found: ");
     SerialUSB.println(beacon.major);
+    myLora.tx(String(beacon.major));
   }
 }
 
 void setup() {
   pinMode(VCC_SW, OUTPUT); // fully enable grove shield
   digitalWrite(VCC_SW, HIGH); // fully enable grove shield
+  digitalWrite(BEE_VCC, HIGH); // beeeee
 
   SerialUSB.begin(9600);
   Serial2.begin(9600);
+  Serial1.begin(9600);
 
   while(!SerialUSB);
 
+  lora_init();
+
   ble_start();
   //ble_set_slave();
-  //ble_set_master();
+  ble_set_master();
 
   delay(1000);
 
@@ -74,12 +87,39 @@ void loop() {
   delay(5000);
 
 
-  
+
 }
 
 
 
 
+
+// LORA SHIT
+
+
+void lora_init() {
+  myLora.autobaud();
+  SerialUSB.println("DevEUI? ");
+  SerialUSB.print(F("> "));
+  SerialUSB.println(myLora.hweui());
+  SerialUSB.println("Version?");
+  SerialUSB.print(F("> "));
+  SerialUSB.println(myLora.sysver());
+  SerialUSB.println(F("--------------------------------"));
+
+  SerialUSB.println(F("Connecting to KPN"));
+  bool join_result = false;
+
+  join_result = myLora.initABP(DevID, NwkSKey, AppSkey);
+
+  while(!join_result) {
+    SerialUSB.println("\u2A2F Unable to join. Are your keys correct, and do you have KPN coverage?");
+    delay(30000); //delay 30s before retry
+    join_result = myLora.init();
+  }
+
+  SerialUSB.println("\u2713 Successfully joined KPN");
+}
 
 // BLE SHIT
 
@@ -97,7 +137,7 @@ void ble_set_master() {
   SerialUSB.println(ble_set_conf("ROLE1")); // set to Central
   SerialUSB.println(ble_set_conf("SHOW1"));
   SerialUSB.println(ble_set_conf("RESET"));
-  
+
   SerialUSB.println(" done.");
 }
 
@@ -121,7 +161,7 @@ void ble_set_slave() {
   delay(1000);
 
   ble_wait_till_active();
-  
+
   SerialUSB.println(" done.");
 }
 
@@ -185,7 +225,7 @@ void ble_scan() {
 
 void ble_set_minor(int value) {
   String minorHex = byteToHexString(uint8_t((value & 0xFF00) >> 8)) + byteToHexString(uint8_t(value));
-  
+
   delay(10);
   SerialUSB.println(ble_set_conf("MINO0x" + minorHex)); // set minor
   delay(1000);
@@ -193,7 +233,7 @@ void ble_set_minor(int value) {
 
 void ble_set_major(int value) {
   String majorHex = byteToHexString(uint8_t((value & 0xFF00) >> 8)) + byteToHexString(uint8_t(value));
-  
+
   delay(10);
   SerialUSB.println(ble_set_conf("MARJ0x" + majorHex)); // set major
   delay(1000);
@@ -211,7 +251,7 @@ void ble_start_advertising() {
 void ble_stop_advertising() {
   SerialUSB.print("Stop advertising...");
   ble_wait_till_active();
-  
+
   delay(10);
   SerialUSB.print(ble_set_conf("ROLE1")); // set to central to disable advertising
   delay(1000);
@@ -253,7 +293,7 @@ String ble_send_cmd(String cmd) {
 
   /* wait for more data if the cmd has a '+' */
   bool waitForMore = false;
-  if(cmd.indexOf("+") >= 0) 
+  if(cmd.indexOf("+") >= 0)
     waitForMore = true;
 
   /* send command */
@@ -263,7 +303,7 @@ String ble_send_cmd(String cmd) {
   boolean hashtag = false;
   uint32_t startMillis_BLE = millis();
 
-  while ((response.indexOf("OK") < 0 || Serial2.available() || waitForMore) && !failed) {    
+  while ((response.indexOf("OK") < 0 || Serial2.available() || waitForMore) && !failed) {
     if (Serial2.available()) {
       response.concat(char(Serial2.read()));
       delayMicroseconds(2000);
@@ -313,4 +353,3 @@ char nibbleToHexCharacter(uint8_t nibble) {
 uint8_t hexCharacterToNibble(char hex) {
   return (hex >= 'A') ? (uint8_t)(hex - 'A' + 10) : (uint8_t)(hex - '0');
 }
-
