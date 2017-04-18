@@ -1,8 +1,12 @@
-#include "rn2xx3.h"
+#define IS_GATEWAY 0 // 1 == gateway | 0 == node
 
-#define DevID "14203842"
-#define NwkSKey "e37001af062ed04f193a12a7eccecee1"
-#define AppSkey "5e9139972fe9767cb317fd8525a0982b"
+#if (IS_GATEWAY)
+  #include "rn2xx3.h"
+
+  #define DevID "14203842"
+  #define NwkSKey "e37001af062ed04f193a12a7eccecee1"
+  #define AppSkey "5e9139972fe9767cb317fd8525a0982b"
+#endif
 
 static const uint8_t DEFAULT_RESPONSE_LENGTH     = 8;          // in characters
 static const uint16_t COMMAND_TIMEOUT_TIME       = 100;        // in ms (discovered empirically)
@@ -12,7 +16,9 @@ static const uint16_t DELAY_AFTER_SW_RESET_BLE   = 900;        // in ms (discove
 static const uint16_t DEFAULT_DETECTION_TIME     = 5000;       // in ms
 static const uint16_t MIN_RAM = 253; // in bytes -> keep the RAM > 200 to prevent bugs!
 
-rn2xx3 myLora(Serial1);
+#if (IS_GATEWAY)
+  rn2xx3 myLora(Serial1);
+#endif
 
 typedef enum : uint8_t {
   INTERV_100MS  = 0,
@@ -38,14 +44,15 @@ typedef struct {
   int16_t txPower;           // 2 bytes
 } iBeaconData_t;
 
-
-void onBeaconFound(iBeaconData_t beacon) {
-  if(beacon.uuid == "00001338B64445208F0C720EAF059935") {
-    SerialUSB.print("Beacon found: ");
-    SerialUSB.println(beacon.major);
-    myLora.tx(String(beacon.major));
+#if (IS_GATEWAY)
+  void onBeaconFound(iBeaconData_t beacon) {
+    if(beacon.uuid == "00001338B64445208F0C720EAF059935") {
+      SerialUSB.print("Beacon found: ");
+      SerialUSB.println(beacon.major);
+      myLora.tx(String(beacon.major));
+    }
   }
-}
+#endif
 
 void setup() {
   pinMode(VCC_SW, OUTPUT); // fully enable grove shield
@@ -56,38 +63,31 @@ void setup() {
   Serial2.begin(9600);
   Serial1.begin(9600);
 
-  while(!SerialUSB);
-
-  lora_init();
+  //while(!SerialUSB); // DEBUG: WAIT FOR SERIAL CONNECTION
 
   ble_start();
-  //ble_set_slave();
-  ble_set_master();
+  #if (IS_GATEWAY)
+    lora_init();
+    ble_set_master();
+  #else
+    ble_set_slave();
+  #endif
 
   delay(1000);
-
-
-  //String responseTest = ble_send_cmd("AT+DISI?");
-  //SerialUSB.println(responseTest);
 }
 
 void loop() {
-  //SerialUSB.println("loop");
+  #if (IS_GATEWAY)
+    ble_scan();
+    delay(2000);
+  #else
+    ble_set_minor(100);
 
-  /*ble_set_minor(100);
-
-  ble_start_advertising();
-  delay(5000);
-  ble_stop_advertising();
-  delay(3000);*/
-
-
-  ble_scan();
-
-  delay(5000);
-
-
-
+    ble_start_advertising();
+    delay(5000);
+    ble_stop_advertising();
+    delay(3000);
+  #endif
 }
 
 
@@ -96,30 +96,31 @@ void loop() {
 
 // LORA SHIT
 
-
-void lora_init() {
-  myLora.autobaud();
-  SerialUSB.println("DevEUI? ");
-  SerialUSB.print(F("> "));
-  SerialUSB.println(myLora.hweui());
-  SerialUSB.println("Version?");
-  SerialUSB.print(F("> "));
-  SerialUSB.println(myLora.sysver());
-  SerialUSB.println(F("--------------------------------"));
-
-  SerialUSB.println(F("Connecting to KPN"));
-  bool join_result = false;
-
-  join_result = myLora.initABP(DevID, NwkSKey, AppSkey);
-
-  while(!join_result) {
-    SerialUSB.println("\u2A2F Unable to join. Are your keys correct, and do you have KPN coverage?");
-    delay(30000); //delay 30s before retry
-    join_result = myLora.init();
+#if (IS_GATEWAY)
+  void lora_init() {
+    myLora.autobaud();
+    SerialUSB.println("DevEUI? ");
+    SerialUSB.print(F("> "));
+    SerialUSB.println(myLora.hweui());
+    SerialUSB.println("Version?");
+    SerialUSB.print(F("> "));
+    SerialUSB.println(myLora.sysver());
+    SerialUSB.println(F("--------------------------------"));
+  
+    SerialUSB.println(F("Connecting to KPN"));
+    bool join_result = false;
+  
+    join_result = myLora.initABP(DevID, NwkSKey, AppSkey);
+  
+    while(!join_result) {
+      SerialUSB.println("\u2A2F Unable to join. Are your keys correct, and do you have KPN coverage?");
+      delay(30000); //delay 30s before retry
+      join_result = myLora.init();
+    }
+  
+    SerialUSB.println("\u2713 Successfully joined KPN");
   }
-
-  SerialUSB.println("\u2713 Successfully joined KPN");
-}
+#endif
 
 // BLE SHIT
 
@@ -218,7 +219,9 @@ void ble_scan() {
       iBeacon.txPower      |= hexStringToByte(data.substring(indexMatch+68, indexMatch+70));
       iBeacon.txPower *= -1;
 
-      onBeaconFound(iBeacon);
+      #if (IS_GATEWAY)
+        onBeaconFound(iBeacon);
+      #endif
     }
   }
 }
