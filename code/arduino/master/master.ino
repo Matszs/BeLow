@@ -1,7 +1,7 @@
 #include "FlashAsEEPROM.h"
 #include "FlashStorage.h"
 
-#define IS_GATEWAY 1 // 1 == gateway | 0 == node
+#define IS_GATEWAY 0 // 1 == gateway | 0 == node
 
 
 #if (IS_GATEWAY)
@@ -97,7 +97,7 @@ void loop() {
   #else
     if(digitalRead(0) == LOW) {
   
-      ble_set_major(128);
+      ble_set_major(888);
   
       ble_start_advertising();
       delay(5000);
@@ -249,6 +249,7 @@ void ble_scan() {
 }
 
 void ble_set_minor(int value) {
+  ble_wait_till_active();
   String minorHex = byteToHexString(uint8_t((value & 0xFF00) >> 8)) + byteToHexString(uint8_t(value));
 
   delay(10);
@@ -257,6 +258,7 @@ void ble_set_minor(int value) {
 }
 
 void ble_set_major(int value) {
+  ble_wait_till_active();
   String majorHex = byteToHexString(uint8_t((value & 0xFF00) >> 8)) + byteToHexString(uint8_t(value));
 
   delay(10);
