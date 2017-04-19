@@ -59,6 +59,8 @@ void setup() {
   digitalWrite(VCC_SW, HIGH); // fully enable grove shield
   digitalWrite(BEE_VCC, HIGH); // beeeee
 
+  pinMode(0, INPUT);
+
   SerialUSB.begin(9600);
   Serial2.begin(9600);
   Serial1.begin(9600);
@@ -81,12 +83,16 @@ void loop() {
     ble_scan();
     delay(2000);
   #else
-    ble_set_minor(100);
+    if(digitalRead(0) == LOW) {
+  
+      ble_set_major(128);
+  
+      ble_start_advertising();
+      delay(5000);
+      ble_stop_advertising();
+      delay(3000);
 
-    ble_start_advertising();
-    delay(5000);
-    ble_stop_advertising();
-    delay(3000);
+    }
   #endif
 }
 
