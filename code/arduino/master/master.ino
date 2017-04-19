@@ -1,4 +1,8 @@
+#include "FlashAsEEPROM.h"
+#include "FlashStorage.h"
+
 #define IS_GATEWAY 0 // 1 == gateway | 0 == node
+
 
 #if (IS_GATEWAY)
   #include "rn2xx3.h"
@@ -7,6 +11,13 @@
   #define NwkSKey "e37001af062ed04f193a12a7eccecee1"
   #define AppSkey "5e9139972fe9767cb317fd8525a0982b"
 #endif
+
+typedef struct {
+  char id[9];
+  bool set;
+} BLEnode;
+
+FlashStorage(settings, BLEnode);
 
 static const uint8_t DEFAULT_RESPONSE_LENGTH     = 8;          // in characters
 static const uint16_t COMMAND_TIMEOUT_TIME       = 100;        // in ms (discovered empirically)
@@ -46,7 +57,7 @@ typedef struct {
 
 #if (IS_GATEWAY)
   void onBeaconFound(iBeaconData_t beacon) {
-    if(beacon.uuid == "00001338B64445208F0C720EAF059935") {
+    if(beacon.uuid.startsWith("00001338")) {
       SerialUSB.print("Beacon found: ");
       SerialUSB.println(beacon.major);
       myLora.tx(String(beacon.major));
@@ -63,6 +74,7 @@ void setup() {
   Serial2.begin(9600);
   Serial1.begin(9600);
 
+  randomSeed(analogRead(0));
   //while(!SerialUSB); // DEBUG: WAIT FOR SERIAL CONNECTION
 
   ble_start();
@@ -144,10 +156,22 @@ void ble_set_master() {
 
 void ble_set_slave() {
   SerialUSB.print("Setting device as slave...");
+  delay(4000);
   ble_wait_till_active();
+  char IBE[9];
+  getBleId(IBE);
+  String UUID = "IBE3"+ String(IBE);
+  
 
+  SerialUSB.println("kaas");
+  
+  SerialUSB.println(UUID);
+  //SerialUSB.println(IBE);
+
+  
   SerialUSB.println(ble_set_conf("ROLE0"));
   SerialUSB.println(ble_set_conf("IBE000001338"));
+  SerialUSB.println(ble_set_conf(UUID));
   SerialUSB.println(ble_set_conf("MARJ0x1337"));
   SerialUSB.println(ble_set_conf("MINO0x1337"));
   SerialUSB.println(ble_set_conf("ADVI5"));
@@ -356,3 +380,26 @@ char nibbleToHexCharacter(uint8_t nibble) {
 uint8_t hexCharacterToNibble(char hex) {
   return (hex >= 'A') ? (uint8_t)(hex - 'A' + 10) : (uint8_t)(hex - '0');
 }
+
+void getBleId(char* ble_id){
+    BLEnode node;
+    node = settings.read();
+    if (node.set == false){
+      node.set = true;
+      char charSelection[] = { '0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
+      char rId[8];
+      for(int i = 0; i < 8; i++){
+        ble_id[i] = charSelection[random(0,16)];
+      }
+      ble_id[8] = '\0';
+      
+      strncpy(node.id, ble_id, 8);
+      settings.write(node);
+    }
+    else {
+      memcpy(ble_id, node.id, 8);
+    }
+    SerialUSB.println(ble_id);
+}
+
+
