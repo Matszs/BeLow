@@ -1,7 +1,7 @@
 #include "FlashAsEEPROM.h"
 #include "FlashStorage.h"
 
-#define IS_GATEWAY 0 // 1 == gateway | 0 == node
+#define IS_GATEWAY 1 // 1 == gateway | 0 == node
 
 
 #if (IS_GATEWAY)
@@ -60,7 +60,7 @@ typedef struct {
     if(beacon.uuid.startsWith("00001338")) {
       SerialUSB.print("Beacon found: ");
       SerialUSB.println(beacon.major);
-      myLora.tx(String(beacon.major));
+      myLora.tx(beacon.uuid + "|" + String(beacon.major));
     }
   }
 #endif
@@ -162,18 +162,10 @@ void ble_set_master() {
 
 void ble_set_slave() {
   SerialUSB.print("Setting device as slave...");
-  delay(4000);
   ble_wait_till_active();
   char IBE[9];
   getBleId(IBE);
   String UUID = "IBE3"+ String(IBE);
-  
-
-  SerialUSB.println("kaas");
-  
-  SerialUSB.println(UUID);
-  //SerialUSB.println(IBE);
-
   
   SerialUSB.println(ble_set_conf("ROLE0"));
   SerialUSB.println(ble_set_conf("IBE000001338"));
@@ -405,7 +397,6 @@ void getBleId(char* ble_id){
     else {
       memcpy(ble_id, node.id, 8);
     }
-    SerialUSB.println(ble_id);
 }
 
 
