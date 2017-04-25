@@ -1,5 +1,6 @@
 #define IS_GATEWAY 0 // 1 == gateway | 0 == node
 #include "platform.h"
+#define SENSOR_TYPE DOOR_SENSOR
 
 
 
@@ -18,9 +19,26 @@ void setup() {
   digitalWrite(VCC_SW, HIGH); // fully enable grove shield
   digitalWrite(BEE_VCC, HIGH); // beeeee
 
-  pinMode(0, INPUT); // door sensor
-  pinMode(2, INPUT); // tempature sensor
-  pinMode(13, INPUT); // tempature sensor
+  
+  
+
+  switch(SENSOR_TYPE) {
+    case DOOR_SENSOR:
+      pinMode(0, INPUT); // door sensor
+    break;
+    case PIR_SENSOR:
+
+    break;
+
+    case TEMPERATURE_SENSOR:
+      pinMode(2, INPUT); // tempature sensor
+    break;
+
+    case LDR_SENSOR:
+      pinMode(13, INPUT); // tempature sensor
+    break;
+  }
+  
 
   SerialUSB.begin(9600);
   Serial2.begin(9600);

@@ -12,11 +12,11 @@ typedef struct {
   bool set;
 } BLEnode;
 
-typedef enum : uint8_t {
-  DOOR_SENSOR  = 0,
-  PIR_SENSOR  = 1,
-  TEMPERATURE_SENSOR  = 2,
-  LDR_SENSOR  = 3
+typedef enum {
+  DOOR_SENSOR,
+  PIR_SENSOR,
+  TEMPERATURE_SENSOR,
+  LDR_SENSOR
 } sensor_type;
 
 #if (IS_GATEWAY)
