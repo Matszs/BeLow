@@ -1,5 +1,8 @@
 #include "FlashAsEEPROM.h"
 #include "FlashStorage.h"
+#include "OneWire.h"
+#include "DallasTemperature.h"
+#define ONE_WIRE_BUS 4
 
 #define IS_GATEWAY 0 // 1 == gateway | 0 == node
 
@@ -70,7 +73,9 @@ void setup() {
   digitalWrite(VCC_SW, HIGH); // fully enable grove shield
   digitalWrite(BEE_VCC, HIGH); // beeeee
 
-  pinMode(0, INPUT);
+  pinMode(0, INPUT); // door sensor
+  pinMode(2, INPUT); // tempature sensor
+  pinMode(13, INPUT); // tempature sensor
 
   SerialUSB.begin(9600);
   Serial2.begin(9600);
@@ -90,12 +95,18 @@ void setup() {
   delay(1000);
 }
 
+
+OneWire oneWire(ONE_WIRE_BUS);
+DallasTemperature sensors(&oneWire);
+
 void loop() {
   #if (IS_GATEWAY)
     ble_scan();
     delay(2000);
   #else
-    if(digitalRead(0) == LOW) {
+    /*
+     * DOOR SENSOR
+     * if(digitalRead(0) == LOW) {
   
       ble_set_major(888);
   
@@ -104,7 +115,30 @@ void loop() {
       ble_stop_advertising();
       delay(3000);
 
-    }
+    }*/
+
+    /*// temperature sensor
+    sensors.requestTemperatures();
+    ble_set_major((int)(sensors.getTempCByIndex(0) * 100));
+
+    ble_start_advertising();
+    delay(5000);
+    ble_stop_advertising();
+
+    delay(60000);*/
+
+    int ldrValue = analogRead(13);
+    SerialUSB.println(ldrValue);
+    ble_set_major(ldrValue);
+    
+    ble_start_advertising();
+    delay(5000);
+    ble_stop_advertising();
+
+    delay(60000);
+
+    
+    
   #endif
 }
 
