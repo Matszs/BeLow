@@ -13,6 +13,7 @@ typedef struct {
 } BLEnode;
 
 typedef enum {
+  GATEWAY,
   DOOR_SENSOR,
   PIR_SENSOR,
   TEMPERATURE_SENSOR,

@@ -1,6 +1,6 @@
 #define IS_GATEWAY 0 // 1 == gateway | 0 == node
 #include "platform.h"
-#define SENSOR_TYPE DOOR_SENSOR
+#define SENSOR_TYPE (IS_GATEWAY ? GATEWAY : DOOR_SENSOR)
 
 
 
@@ -19,12 +19,9 @@ void setup() {
   digitalWrite(VCC_SW, HIGH); // fully enable grove shield
   digitalWrite(BEE_VCC, HIGH); // beeeee
 
-  
-  
-
   switch(SENSOR_TYPE) {
     case DOOR_SENSOR:
-      pinMode(0, INPUT); // door sensor
+      pinMode(10, INPUT); // door sensor
     break;
     case PIR_SENSOR:
 
@@ -63,45 +60,55 @@ OneWire oneWire(ONE_WIRE_BUS);
 DallasTemperature sensors(&oneWire);
 
 void loop() {
-  #if (IS_GATEWAY)
-    ble_scan();
-    delay(2000);
-  #else
-    /*
-     * DOOR SENSOR
-     * if(digitalRead(0) == LOW) {
-  
-      ble_set_major(888);
+
+  switch(SENSOR_TYPE) {
+    case DOOR_SENSOR:{
+      if(digitalRead(10) == LOW) {
+        ble_set_major(888);
+    
+        ble_start_advertising();
+        delay(5000);
+        ble_stop_advertising();
+        delay(3000);
+      }
+    }
+    break;
+    case PIR_SENSOR:{
+
+      
+    }
+    break;
+
+    case TEMPERATURE_SENSOR: {
+      sensors.requestTemperatures();
+      ble_set_major((int)(sensors.getTempCByIndex(0) * 100));
   
       ble_start_advertising();
       delay(5000);
       ble_stop_advertising();
-      delay(3000);
+  
+      delay(60000);
+    }
+    break;
 
-    }*/
+    case LDR_SENSOR: {
+      int ldrValue = analogRead(13);
+      SerialUSB.println(ldrValue);
+      ble_set_major(ldrValue);
+      
+      ble_start_advertising();
+      delay(5000);
+      ble_stop_advertising();
+  
+      delay(60000);
+    }
+    break;
 
-    /*// temperature sensor
-    sensors.requestTemperatures();
-    ble_set_major((int)(sensors.getTempCByIndex(0) * 100));
-
-    ble_start_advertising();
-    delay(5000);
-    ble_stop_advertising();
-
-    delay(60000);*/
-
-    int ldrValue = analogRead(13);
-    SerialUSB.println(ldrValue);
-    ble_set_major(ldrValue);
-    
-    ble_start_advertising();
-    delay(5000);
-    ble_stop_advertising();
-
-    delay(60000);
-
-    
-    
-  #endif
+    case GATEWAY: {
+      ble_scan();
+      delay(2000);
+    }
+    break;
+  }
 }
 
