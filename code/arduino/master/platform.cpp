@@ -1,10 +1,48 @@
 #include "platform.h"
 
+extern boolean deviceIsSleeping = false;
+extern int sleepTimerMillis = 0;
+
 FlashStorage(settings, BLEnode);
 
 
+void sleepDevice() {
+  if(!deviceIsSleeping) {
+    SerialUSB.println("> Sleep device");
+    deviceIsSleeping = true;
+    /*USB->DEVICE.CTRLA.reg &= ~USB_CTRLA_ENABLE;
+    PM->AHBMASK.reg &= ~PM_AHBMASK_USB;
+    PM->APBBMASK.reg &= ~PM_APBBMASK_USB;
+  
+    SCB->SCR |= SCB_SCR_SLEEPDEEP_Msk;*/
+  
+    __WFI();
+  }
+}
 
+void wakeDevice() {
+  if(deviceIsSleeping) {
+    SerialUSB.println("> Wake device");
+    deviceIsSleeping = false;
+    PM->APBBMASK.reg |= PM_APBBMASK_USB;
+    PM->AHBMASK.reg |= PM_AHBMASK_USB;
+    USB->DEVICE.CTRLA.reg |= USB_CTRLA_ENABLE;
+  }
+}
 
+void sleepActions() {
+  if(deviceIsSleeping) {
+    if(sleepTimerMillis == 0)
+      sleepTimerMillis = millis();
+  
+    if(millis() - sleepTimerMillis > (1000 * 60 * 5)) { // 5 minutes
+      wakeDevice();
+      sleepTimerMillis = millis();
+    }
+    
+    delay(1);
+  }
+}
 
 // LORA SHIT
 

@@ -1,7 +1,6 @@
 #define IS_GATEWAY 0 // 1 == gateway | 0 == node
 #include "platform.h"
-#define SENSOR_TYPE (IS_GATEWAY ? GATEWAY : DOOR_SENSOR)
-
+#define SENSOR_TYPE (IS_GATEWAY ? GATEWAY : TEMPERATURE_SENSOR)
 
 
 #if (IS_GATEWAY)
@@ -21,7 +20,7 @@ void setup() {
 
   switch(SENSOR_TYPE) {
     case DOOR_SENSOR:
-      pinMode(10, INPUT); // door sensor
+      pinMode(0, INPUT); // door sensor
     break;
     case PIR_SENSOR:
 
@@ -29,6 +28,7 @@ void setup() {
 
     case TEMPERATURE_SENSOR:
       pinMode(2, INPUT); // tempature sensor
+      NVIC_EnableIRQ((IRQn_Type)0x02);
     break;
 
     case LDR_SENSOR:
@@ -36,7 +36,6 @@ void setup() {
     break;
   }
   
-
   SerialUSB.begin(9600);
   Serial2.begin(9600);
   Serial1.begin(9600);
@@ -63,7 +62,7 @@ void loop() {
 
   switch(SENSOR_TYPE) {
     case DOOR_SENSOR:{
-      if(digitalRead(10) == LOW) {
+      if(digitalRead(0) == LOW) {
         ble_set_major(888);
     
         ble_start_advertising();
@@ -80,14 +79,19 @@ void loop() {
     break;
 
     case TEMPERATURE_SENSOR: {
-      sensors.requestTemperatures();
-      ble_set_major((int)(sensors.getTempCByIndex(0) * 100));
-  
-      ble_start_advertising();
-      delay(5000);
-      ble_stop_advertising();
-  
-      delay(60000);
+      if(!deviceIsSleeping) {
+        sensors.requestTemperatures();
+        ble_set_major((int)(sensors.getTempCByIndex(0) * 100));
+    
+        ble_start_advertising();
+        delay(10000);
+        ble_stop_advertising();
+    
+        delay(2000);
+        sleepDevice();
+      }
+      
+      sleepActions();
     }
     break;
 
