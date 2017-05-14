@@ -1,7 +1,9 @@
 #define IS_GATEWAY 0 // 1 == gateway | 0 == node
 #include "platform.h"
-#define SENSOR_TYPE (IS_GATEWAY ? GATEWAY : TEMPERATURE_SENSOR)
+#define SENSOR_TYPE (IS_GATEWAY ? GATEWAY : ALL)
 
+#define ONE_WIRE_BUS 4 // temperature sensor
+unsigned long timer = 0;
 
 #if (IS_GATEWAY)
   void onBeaconFound(iBeaconData_t beacon) {
@@ -34,11 +36,17 @@ void setup() {
     case LDR_SENSOR:
       pinMode(13, INPUT); // tempature sensor
     break;
+
+    case ALL:
+      pinMode(0, INPUT); // door sensor
+      // temperature sensor is initalized on top 'ONE_WIRE_BUS'
+      // TODO: Init other sensors
+    break;
   }
   
-  SerialUSB.begin(9600);
-  Serial2.begin(9600);
-  Serial1.begin(9600);
+  SerialUSB.begin(9600); // debugging
+  Serial2.begin(9600); // BLE module
+  Serial1.begin(9600); // LoRa
 
   randomSeed(analogRead(0));
   //while(!SerialUSB); // DEBUG: WAIT FOR SERIAL CONNECTION
@@ -63,7 +71,8 @@ void loop() {
   switch(SENSOR_TYPE) {
     case DOOR_SENSOR:{
       if(digitalRead(0) == LOW) {
-        ble_set_major(888);
+        ble_set_minor(00001); // 1 = doorsensor
+        ble_set_major(11111);
     
         ble_start_advertising();
         delay(5000);
@@ -81,6 +90,8 @@ void loop() {
     case TEMPERATURE_SENSOR: {
       if(!deviceIsSleeping) {
         sensors.requestTemperatures();
+       
+        ble_set_minor(00002); // 2 = temperature sensor
         ble_set_major((int)(sensors.getTempCByIndex(0) * 100));
     
         ble_start_advertising();
@@ -98,6 +109,7 @@ void loop() {
     case LDR_SENSOR: {
       int ldrValue = analogRead(13);
       SerialUSB.println(ldrValue);
+      ble_set_minor(00003); // 3 = LDR sensor
       ble_set_major(ldrValue);
       
       ble_start_advertising();
@@ -113,6 +125,35 @@ void loop() {
       delay(2000);
     }
     break;
+
+    case ALL: {
+      if(digitalRead(0) == LOW) {
+        SerialUSB.println("> Doorsensor trigger");
+        ble_set_minor(00001); // 1 = doorsensor
+        ble_set_major(11111);
+    
+        ble_start_advertising();
+        delay(5000);
+        ble_stop_advertising();
+        delay(2000);
+        
+      } else if(timer == 0 || (timer + (1000 * 60) < millis())) { // 1 minute interval
+        SerialUSB.println("> temperature trigger");
+        sensors.requestTemperatures();
+        
+        ble_set_minor(00002); // 2 = temperature sensor
+        ble_set_major((int)(sensors.getTempCByIndex(0) * 100));
+    
+        ble_start_advertising();
+        delay(5000);
+        ble_stop_advertising();
+        delay(2000);
+
+        timer = millis();
+      }
+    }
+    break;
+    
   }
 }
 

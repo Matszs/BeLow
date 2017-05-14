@@ -35,7 +35,7 @@ void sleepActions() {
     if(sleepTimerMillis == 0)
       sleepTimerMillis = millis();
   
-    if(millis() - sleepTimerMillis > (1000 * 60 * 5)) { // 5 minutes
+    if(millis() - sleepTimerMillis > (1000 * 60 * 0.5)) { // 0.5 minutes
       wakeDevice();
       sleepTimerMillis = millis();
     }

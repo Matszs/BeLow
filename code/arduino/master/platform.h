@@ -5,7 +5,6 @@
   #include "FlashStorage.h"
   #include "OneWire.h"
   #include "DallasTemperature.h"
-  #define ONE_WIRE_BUS 4
   
   typedef struct {
     char id[9];
@@ -17,7 +16,8 @@
     DOOR_SENSOR,
     PIR_SENSOR,
     TEMPERATURE_SENSOR,
-    LDR_SENSOR
+    LDR_SENSOR,
+    ALL
   } sensor_type;
   
   #if (IS_GATEWAY)
