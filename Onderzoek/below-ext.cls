@@ -57,6 +57,7 @@
 % Paper Metadata
 
 \newcommand*{\copyrightinfo}[1]{\gdef\@copyrightinfo{\raggedright#1}}
+\newcommand*{\abstract}[1]{\gdef\@abstract{\raggedright#1}}
 
 \def\keywords{
 \section*{Author Keywords}
@@ -207,7 +208,7 @@
 \renewcommand{\maketitle}{
   % allocate paper title
   \begin{minipage}[t]{0.19\textwidth}\mbox{}\end{minipage}%
-  \begin{minipage}[b]{0.81\textwidth}
+  \begin{minipage}[b]{0.91\textwidth}
     \rule{1.03\textwidth}{3pt}
   	\renewcommand\baselinestretch{0.75}
     \usefont{OT1}{phv}{bc}{n}\selectfont
@@ -219,7 +220,7 @@
   % allocate authors, optional teaser, ...
 %  \begin{minipage}[b][0.74\textheight][b]{\linewidth}
 %  \begin{minipage}[t][0.2\textheight][t]{\linewidth}\mbox{}\end{minipage}
-  \begin{minipage}[t][0.76\textheight][t]{\linewidth}
+  \begin{minipage}[t][0.74\textheight][t]{\linewidth}
     \ifx\acm@teaser\acm@empty 
       \begin{minipage}[t][0.5\textheight][t]{\linewidth}{\small\@author}\end{minipage}
     \else
@@ -234,8 +235,7 @@
     \vfil
     
     % ... and ACM copyright
-    \rule{\columnwidth}{0.5pt}
-    {\scriptsize\@copyrightinfo \\}
+    %\rule{\columnwidth}{0.5pcopyrightinfo\scriptsize\@copyrightinfo \\}
   \end{minipage}
 
   % avoid title overlapping with abstract 
@@ -250,6 +250,5 @@ $\bullet$ License: The author(s) retain copyright, but ACM receives an exclusive
 $\bullet$ Open Access: The author(s) wish to pay for the work to be open access. The additional fee must be paid to ACM.\\
 This text field is large enough to hold the appropriate release statement assuming it is single spaced.
 }
-
 \endinput
 % That's all folks!
