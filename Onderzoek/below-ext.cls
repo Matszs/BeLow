@@ -57,7 +57,6 @@
 % Paper Metadata
 
 \newcommand*{\copyrightinfo}[1]{\gdef\@copyrightinfo{\raggedright#1}}
-\newcommand*{\abstract}[1]{\gdef\@abstract{\raggedright#1}}
 
 \def\keywords{
 \section*{Author Keywords}
