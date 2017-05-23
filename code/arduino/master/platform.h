@@ -41,7 +41,7 @@
   static const uint16_t MIN_RAM = 253; // in bytes -> keep the RAM > 200 to prevent bugs!
   
   #if (IS_GATEWAY)
-    rn2xx3 myLora(Serial1);
+    //rn2xx3 myLora(Serial1);
   #endif
   
   typedef enum : uint8_t {
@@ -94,5 +94,7 @@
   uint8_t hexStringToByte(String str);
   char nibbleToHexCharacter(uint8_t nibble);
   uint8_t hexCharacterToNibble(char hex);
+
+  void onBeaconFound(iBeaconData_t beacon);
 
 #endif
