@@ -1,16 +1,42 @@
-#define IS_GATEWAY 0 // 1 == gateway | 0 == node
+#define IS_GATEWAY 1 // 1 == gateway | 0 == node
 #include "platform.h"
-#define SENSOR_TYPE (IS_GATEWAY ? GATEWAY : ALL)
+#define SENSOR_TYPE (IS_GATEWAY ? GATEWAY : TEMPERATURE_SENSOR)
 
 #define ONE_WIRE_BUS 4 // temperature sensor
 unsigned long timer = 0;
 
 #if (IS_GATEWAY)
+  rn2xx3 myLora(Serial1);
+
+  void lora_init() {
+    myLora.autobaud();
+    SerialUSB.println("DevEUI? ");
+    SerialUSB.print(F("> "));
+    SerialUSB.println(myLora.hweui());
+    SerialUSB.println("Version?");
+    SerialUSB.print(F("> "));
+    SerialUSB.println(myLora.sysver());
+    SerialUSB.println(F("--------------------------------"));
+  
+    SerialUSB.println(F("Connecting to KPN"));
+    bool join_result = false;
+  
+    join_result = myLora.initABP(DevID, NwkSKey, AppSkey);
+  
+    while(!join_result) {
+      SerialUSB.println("\u2A2F Unable to join. Are your keys correct, and do you have KPN coverage?");
+      delay(30000); //delay 30s before retry
+      join_result = myLora.init();
+    }
+  
+    SerialUSB.println("\u2713 Successfully joined KPN");
+  }
+  
   void onBeaconFound(iBeaconData_t beacon) {
     if(beacon.uuid.startsWith("00001338")) {
       SerialUSB.print("Beacon found: ");
       SerialUSB.println(beacon.major);
-      myLora.tx(beacon.uuid + "|" + String(beacon.major));
+      myLora.tx(beacon.uuid + "|" + String(beacon.major) + "|" + String(beacon.minor));
     }
   }
 #endif
@@ -122,7 +148,7 @@ void loop() {
 
     case GATEWAY: {
       ble_scan();
-      delay(2000);
+      delay(1000);
     }
     break;
 

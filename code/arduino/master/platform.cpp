@@ -1,3 +1,4 @@
+#define IS_GATEWAY 1 // 1 == gateway | 0 == node
 #include "platform.h"
 
 extern boolean deviceIsSleeping = false;
@@ -44,33 +45,6 @@ void sleepActions() {
   }
 }
 
-// LORA SHIT
-
-#if (IS_GATEWAY)
-  void lora_init() {
-    myLora.autobaud();
-    SerialUSB.println("DevEUI? ");
-    SerialUSB.print(F("> "));
-    SerialUSB.println(myLora.hweui());
-    SerialUSB.println("Version?");
-    SerialUSB.print(F("> "));
-    SerialUSB.println(myLora.sysver());
-    SerialUSB.println(F("--------------------------------"));
-  
-    SerialUSB.println(F("Connecting to KPN"));
-    bool join_result = false;
-  
-    join_result = myLora.initABP(DevID, NwkSKey, AppSkey);
-  
-    while(!join_result) {
-      SerialUSB.println("\u2A2F Unable to join. Are your keys correct, and do you have KPN coverage?");
-      delay(30000); //delay 30s before retry
-      join_result = myLora.init();
-    }
-  
-    SerialUSB.println("\u2713 Successfully joined KPN");
-  }
-#endif
 
 // BLE SHIT
 
