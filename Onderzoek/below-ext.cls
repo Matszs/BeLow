@@ -16,7 +16,7 @@
 %\setlength{\paperwidth}{8.27in}
 
 \setlength{\textwidth}{6.25in}
-\setlength{\textheight}{6in}
+\setlength{\textheight}{9in}
 
 \setlength{\oddsidemargin}{0in}
 \setlength{\topmargin}{0.25in}
