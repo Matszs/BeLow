@@ -59,7 +59,11 @@
 \usepackage{balance}    % useful for balancing the last columns
 \usepackage{bibspacing} % save vertical space in references
 \usepackage{ragged2e} % alignment
-
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[]{csquotes} 
+\usepackage{biblatex}
+\addbibresource{refs.bib}
 
 \begin{document}
 
@@ -110,18 +114,17 @@ This paper will begin with a report on literature and field studies performed to
 
 % =============================================================================
 
-
+\section{Methods now}
+Voor ons onderzoek zijn we in gesprek gegaan met een groep ouderen bij een kleine leefgemeenschap voor ondersteund zelfstandigen. De leefgemeenschap heeft zelf al een aantal sytemen in plaats om incidenten te voorkomen. De meeste van deze systemen zijn heel simpel van aard. Zo is er bijvoorbeeld een kaartje voor het aangeven van of je wakker bent of dat je bent gaan slapen. S` avonds wordt dan afwisselend door een persoon rondgelopen en dit herhaalt zich ook voor de ochtend. Mocht het nou zo zijn dat het ongebruikelijk wordt geacht dat iemand nog slaapt of juist niet, dan wordt er bij de persoon gecontroleerd of alles nog goed gaat.\cite{nivel} 
 %\section{Acknowledgements}
 %We thank all DUX 2003 publications support and staff who wrote this document originally and allowed us to modify it for this conference.
 %This template was based on Manas Tungare's \texttt{chi.cls}, and rewritten by Luis A. Leiva.
 
-\section{References format}
-References must be the same font size as other body text.
-% REFERENCES FORMAT
 % References must be the same font size as other body text.
 
 \balance
-\bibliographystyle{acm-sigchi}
-\bibliography{refs}
-
+%\bibliographystyle{acm} % het was eerst acm-sigchi maar dat werkte niet compiler gaf error.
+%\bibliography{refs}
+%\addbibresource{refs.bib}
+\printbibliography
 \end{document}
