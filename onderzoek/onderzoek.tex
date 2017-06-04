@@ -117,7 +117,16 @@ This section will focus on the state of the art technology as of this time (2017
 
 A surprisingly big misconception when it comes to innovation aimed specifically at the elderly community, is that this is an audience that, as a whole, wants roughtly the same thing; all share similar fears, weaknesses and requirements. In reality, however, there exists a myriad of different people all with different abilities and disabilities. Some are physical, such as bone atrophy, or mental, such as dementia or a combination of the two resulting from a stroke. [Reitenbach and Schot, 2012]
 
+\section{Available platforms}
+Uiteraard zijn de ideeen voor het aanpakken van de problematiek in de zorg door middel van sensor systemen niet nieuw. Zo heeft Philips laats hen sensorplatform CareSensus uitgerold en getest bij Zorg instelling Cordaan te Amsterdam.
+En er zijn nog meer systemen die bijvoorbeeld een koppeling kunnen maken aan de Universele Meldbank Ouderenalarmering.
 
+Dit zijn onder andere.
+\begin{itemize}
+\item Care@Home van Essence
+\item Sensara
+\item Livind
+\end{itemize}
 
 % =============================================================================
 %\section{Copyright}
@@ -137,6 +146,11 @@ Ouderen hebben vaak (nog) geen internet verbinding. In onze studiegroep was dit 
 
 \subsection{Open standards}
 Met het gebruik van voornamelijk open standaarden willen we zorgen dat in de toekomst ontwikkelaars en hobbyisten zich willen bezig houden met het ondersteunen onderhouden en uitbreiden van de mogelijkheden. Zoals het platform nu is ingericht is er nog weinig spannends vast te leggen. Een van de toepassingen die we graag zien is om mensen te kunnen laten interacteren met het platform. Er voor kunnen zorgen dat het niet alleen voor zorgspecialisten een handige tool is. Maar dat de mensen waarom het gaat er ook iets nuttigs in zien. Hoewel de Google Home en de Amazon Alexa geen (echte) open standaard zijn zou je wel kunnen denken aan een soort personal assistent die er ook voor zorgt dat je je pillen op tijd inneemt. Tegelijkertijd is er een sensor in de pillendoos die opmerkt dat ze inderdaad ingenomen zijn. Deze data is uitermate geschikt voor het platform en makkelijk toe te voegen.
+\subsubsection{Data Proces}
+\begin{figure}
+\center
+\includegraphics[width=0.2\textwidth]{process}
+\end{figure}
 % WIP moet nog verder andere keer.
 \subsection{Goal}
 Wat we met dit onderzoek willen bereiken is kijken of het mogelijk is de oplossingen die er zijn in de vorm van dure commerciele technologieen in de vorm van community based platformen te gieten. Tegelijkertijd moeten we ons ervan bewust zijn dat bepaalde specialistische hulp of technologie altijd nodig zal zijn. Met de in de laatste paar jaren steeds meer beschikbaarder geworden platformen zoals Arduino, Raspberry Pi en de vele sensoren willen we gebruik maken van deze opties voor onder andere de zorg. De data die doorgaans met dit soort platformen vergaart worden zijn in bepaalde gevallen niet secuur genoeg om echt kennis uit te halen in individuele gevallen. Technologieen zoals Machine based learning bieden hiervoor een uitkomst. Zo kunnen er verbanden worden gevonden en aangetoond die er uiteindelijk voor zorgen dat data bruikbare informatie wordt. Ons platform bied een methode om heel veel data te vergaren. Met specialisten, machine based learning en onderzoekers is het uiteindelijk de bedoeling om dit om te vormen naar informatie, kennis en wijsheid\ref{fig1:dikw}. Waarneer we deze kennis bezitten kunnen we veel beter preventief te werk gaan dan puur alleen registeren van gebeurtenissen. Het gebruik van dit platform moet er dan niet alleen voor zorgen dat de kosten van de zorg afnemen maar dat er ook beter gelet wordt op de wensen van hulpbehoevenden. Het aantal fouten wat gemaakt wordt door menselijk handelen is hierdoor te verminden. Ook is een computer zich beter bewust van subtiele veranderingen dan dat mensen dat kunnen waarnemen. 
@@ -148,6 +162,13 @@ Wat we met dit onderzoek willen bereiken is kijken of het mogelijk is de oplossi
 \end{figure}
 \section{What we have done so far}
 In het onderzoek hebben we ook het design en andere bruikbaarheidsvraagstukken meegenomen. 
+\section{Interviews}
+\begin{figure}
+\center
+\label{fig2:interview}
+\includegraphics[width=0.5\textwidth]{interview}
+\caption{Interview Group}
+\end{figure}
 \section{Data analysis}
 %\lipsum
 % References must be the same font size as other body text.
@@ -155,6 +176,8 @@ In het onderzoek hebben we ook het design en andere bruikbaarheidsvraagstukken m
 \section{Future Work}
 \subsection{Security}
 In het onderzoek in alleen gekeken naar de functionele requirements die bij een monitoring systeem komen kijken. We hebben gedacht aan security maar gekozen om dit in het prototype niet te verwerken vanwege de beperkte duur van het onderzoek en beveiliging moet goed geimplementeerd worden en is geen klus die zo even geklaard wordt. blablabla WIP\ldots
+\subsection{Two way communication}
+Doordat er via LoRa maar een beperkt aantal berichten per dag verstuurd mogen worden, en LoRa zich minder goed leent voor twee weg communicatie is een 3g of 4g modem wellicht een betere keuze.
 %\lipsum
 \balance
 \bibliographystyle{acm-sigchi}
