@@ -61,7 +61,10 @@
 \usepackage[english]{babel}
 \usepackage{lipsum}
 \usepackage{epstopdf}
-
+\usepackage{amssymb}
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
 
 \begin{document}
 
@@ -77,6 +80,7 @@ For the past several years, the changing demographic in the Netherlands has rais
 
 The products available are also specifically targeted at an elderly audience, even though they would be able to cater a much more diverse group of users. Therefore, the goal of BeLow is to lay the foundation for a portable living lab; a standard kit that can be used by anyone, even those with minimal technical experience, and that can be expanded upon by those that wish to do so.
 
+\section{Introduction}
 A major part of this research was performed within Stedeborgh; a living community by the elderly for the elderly. Stedeborgh is a largely autonomous community, with residents aged 67 and up. For this paper several tests, focus groups and interviews were conducted among the residents, and their sentiments, routines and opinions have played a big part in the decisions that were made. Aside from Stedeborgh, this research was performed in collaboration with Amsterdam's Digital Life Centre's project BRAVO (led by Saskia Robben, 1 Apr 2016 - 1 Apr 2018) and Glimworm Information Technology (Adrian Blackwood). Collectively, the question we ask ourselves is: "How can we develop an accessible standard with which to add a layer of intelligence to the living environment?" 
 
 In this paper the focus will be on answering the aforementioned question, as well as answering several other questions:
@@ -89,14 +93,12 @@ In this paper the focus will be on answering the aforementioned question, as wel
 
 This paper will begin with a report on literature and field studies performed to answer the first two of these questions. The second half will consist of reports on experiments and tests performed using prototypes. Finally, we will look to the future and, based on interviews with experts on the subject, discuss how technology may develop in the years to come and how this can be of use to society as a whole.
 
-\section{Introduction}
-
 % =============================================================================
 \section{Related Work}
 % =============================================================================
 This section will focus on the state of the art technology as of this time (2017), as well as the current situation of Elderly care for senior citizens that are living independently or semi-independently in living groups. The first half of this section will illustrate how the care and national budget for this care are managed, what tools are frequently being used and what gaps are currently being encountered. Furthermore we will investigate how independent living groups have developed their own systems for keeping everyone healthy and autonomous. The second half of this section will briefly summarise the current state of the art technology, what advantages they offer the user, and what disadvantages are being encountered.
 
-
+Zo is er onder meer onderzoek naar \ldots
 % Meer verwijzingen naar ander werk
 
 % =============================================================================
@@ -106,7 +108,7 @@ This section will focus on the state of the art technology as of this time (2017
 A surprisingly big misconception when it comes to innovation aimed specifically at the elderly community, is that this is an audience that, as a whole, wants roughly the same thing; all share similar fears, weaknesses and requirements. In reality, however, there exists a myriad of different people all with different abilities and disabilities. Some are physical, such as bone atrophy, or mental, such as dementia or a combination of the two resulting from a stroke. [Reitenbach and Schot, 2012]
 
 \section{Huidige methodes}
-Voor ons onderzoek zijn we in gesprek gegaan met een groep ouderen bij een kleine leefgemeenschap voor ondersteund zelfstandigen. De leefgemeenschap heeft zelf al een aantal systemen in plaats om incidenten te voorkomen. De meeste van deze systemen zijn heel simpel van aard. Zo is er bijvoorbeeld een kaartje voor het aangeven van of je wakker bent of dat je bent gaan slapen. S` avonds wordt dan afwisselend door een persoon rondgelopen en dit herhaalt zich ook voor de ochtend. Mocht het nou zo zijn dat het ongebruikelijk wordt geacht dat iemand nog slaapt of juist niet, dan wordt er bij de persoon gecontroleerd of alles nog goed gaat.
+Voor ons onderzoek zijn we in gesprek gegaan met een groep ouderen bij een kleine leefgemeenschap voor ondersteund zelfstandigen. De leefgemeenschap heeft zelf al een aantal systemen in plaats om incidenten te voorkomen. De meeste van deze systemen zijn heel simpel van aard. Zo is er bijvoorbeeld een kaartje voor het aangeven van of je wakker bent of dat je bent gaan slapen. S` avonds wordt dan afwisselend door een persoon rondgelopen en dit herhaalt zich ook voor de ochtend. Mocht het nou zo zijn dat het ongebruikelijk wordt geacht dat iemand nog slaapt of juist niet, dan wordt er bij de persoon gecontroleerd of alles nog goed gaat.\cite{nivel}
 
 
 \section{Available platforms}
@@ -120,8 +122,14 @@ Dit zijn onder andere.
 \item Livind
 \end{itemize}
 
-\cite{nivel} 
-
+\begin{table}
+\begin{tabular}{l|l|l|l|l}
+& Care@Home & Sensara & Livind & BeLow \\
+\hline
+ZigBee & \cmark & \cmark & \cmark & \xmark \\
+\end{tabular}
+\caption{Slecht een voorbeeld tabel\ldots}
+\end{table}
 \section{Technology}
 Technologie heeft een hele hoop veranderd voor mensen hun dagelijks leven. Apparaten worden steeds kleiner en sneller, en ook worden deze steeds energie zuiniger ontwikkeld. Dit brengt een hoop nieuwe mogelijkheden met zich mee. Waar we 10 jaar geleden nog met telefoons die konden bellen en sms'en lopen de meeste Nederlanders nu met een smartphone op zak. Deze mobiele computer bevat ook steeds vaker een reeks aan sensoren waar voorheen vrij specialistische apparaten voor vereist waren. Ok toegegeven de kwaliteit en nauwkeurigheid met professioneel toegespitste elektronica laat nog wat te wensen, maar over het algemeen zijn deze sensoren heel goed bruikbaar omdat er niet altijd met zulke stricte foutmarges gewerkt hoeft te worden. Dit opent ook de deur naar goedkopere en toegankelijkere zorgtechnologie. We kennen allemaal de toilet val alarmen waarbij er aan een touwtje getrokken moet worden wanneer iemand ten val komt. Tegenwoordig hebben ouderen ook de mogelijkheid een nekhanger te dragen die een alarmknop heeft. Dus nu hebben we de beperking van een bepaalde ruimte overwonnen door verbeterde technologieen. Met het sinds 2016 landelijk dekende LoRa netwerk is het nu ook mogelijk een alarmknop overal mee te nemen zonder bang te zijn dat de batterij misschien niet is opgeladen. In het het geval van ouderen is het nog geen gemeengoed dat zij ook een internetverbinding hebben laat staan eentje op zak. Hier komt mogelijk in de toekomst verandering in doordat de generaties van nu opgroeien met internet.
 % Introductie technologie.
