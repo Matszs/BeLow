@@ -126,12 +126,23 @@ There are several similar platforms available such as:
 
 
 % =============================================================================
-\section{//placeholder//}
+\section{Pre-design research}
 % =============================================================================
 
 \subsection{Stedeborgh}
 
-Before the creation of the prototype we visited Stedeborgh, an independent living community for the elderly, to gather some first hand insights and information. Stedeborgh is an independent living community situated in Grootebroek, the Netherlands.  
+Before the creation of the prototype we visited Stedeborgh, an independent living community for the elderly, to gather some first hand insights and information. Stedeborgh is an independent living community situated in Grootebroek, the Netherlands.  It is not your standard nursing home; it is for the elderly, by the elderly. The residents live alone or in couples in fully fledged apartments, meaning each apartment has its own kitchen and bathroom as well. The apartments face to the inside of the complex, rather than to the outside, and are connected by an indoor garden featuring tropical foliage and equally tropical temperatures. on the ground floor is a large entertainment hall which is perfect for get-togethers, and a cafeteria for special events. The complex is surrounded by a lovely community garden. What makes Stedeborgh stand out most, however, is the way in which the residents look out for each other.
+
+\subsection{Systems}
+The community is maintained by its residents, which means that everyone has a task and responsibilities within the community. A number of systems has been put in place to ensure the safety an wellbeing of the residents. The system that inspired us most was the "asleep/ awake" system. Every apartment has a sign on the door with a sun on one side, and a moon on the other. This sign is turned accordingly whenever the residents go to sleep, and whenever they wake up in the morning. The residents take weekly shifts in which they pass by all the doors in the evening and first thing in the morning. If a sign has not been turned appropriately this could be an indication that something has gone wrong, and the appointed member of the community will check up on their peer immediately. This method, however simple it may be, has proven to be very effective in solving one of the major concerns when it comes to the safety of elderly people living alone; injury by fall. Countless accounts exist of elderly people falling down within their own home, and being unable to get up. In the worst of these cases, the victim may spend days incapacitated on the ground without anyone coming to their aid, sometimes even with death as a result. The system in Stedeborgh ensures that the residents, at the very least, are not without aid for longer than eight hours. 
+
+\subsection{Stedeborgh as a target audience}
+As we were inspired by this community's way of life, and the living quality of its residents, we decided to make the residents of Stedeborgh our main target audience, and design our use cases for this research around them. We were curious about their stance on the use of technology for health-monitoring, and what would make such a system attractive to them as individuals, and as a community. We made the decision to conduct a focus group among those that were interested in our research.
+
+% =============================================================================
+\section{Focus group}
+% =============================================================================
+
 \section{Huidige methodes}
 Voor ons onderzoek zijn we in gesprek gegaan met een groep ouderen bij een kleine leefgemeenschap voor ondersteund zelfstandigen. 
 % vertel meer over stedeborgh; door wie is het opgericht, voor wie is het bedoeld etc.
@@ -148,7 +159,8 @@ ZigBee & \cmark & \cmark & \cmark & \xmark \\
 \end{tabular}
 \caption{Slecht een voorbeeld tabel\ldots}
 \end{table}
-\section{Technology}
+\section
+
 Technologie heeft een hele hoop veranderd voor mensen hun dagelijks leven. Apparaten worden steeds kleiner en sneller, en ook worden deze steeds energie zuiniger ontwikkeld. Dit brengt een hoop nieuwe mogelijkheden met zich mee. Waar we 10 jaar geleden nog met telefoons die konden bellen en sms'en lopen de meeste Nederlanders nu met een smartphone op zak. Deze mobiele computer bevat ook steeds vaker een reeks aan sensoren waar voorheen vrij specialistische apparaten voor vereist waren. Ok toegegeven de kwaliteit en nauwkeurigheid met professioneel toegespitste elektronica laat nog wat te wensen, maar over het algemeen zijn deze sensoren heel goed bruikbaar omdat er niet altijd met zulke stricte foutmarges gewerkt hoeft te worden. Dit opent ook de deur naar goedkopere en toegankelijkere zorgtechnologie. We kennen allemaal de toilet val alarmen waarbij er aan een touwtje getrokken moet worden wanneer iemand ten val komt. 
 % nee die kennen we niet, leg uit
 Tegenwoordig hebben ouderen ook de mogelijkheid een nekhanger te dragen die een alarmknop heeft. 
@@ -156,7 +168,8 @@ Tegenwoordig hebben ouderen ook de mogelijkheid een nekhanger te dragen die een 
 Dus nu hebben we de beperking van een bepaalde ruimte overwonnen door verbeterde technologieen. Met het sinds 2016 landelijk dekende LoRa netwerk is het nu ook mogelijk een alarmknop overal mee te nemen zonder bang te zijn dat de batterij misschien niet is opgeladen. In het het geval van ouderen is het nog geen gemeengoed dat zij ook een internetverbinding hebben laat staan eentje op zak. Hier komt mogelijk in de toekomst verandering in doordat de generaties van nu opgroeien met internet.
 % Introductie technologie.
  
-In onze studiegroep had niemand een internet verbinding. Mede om deze reden is er gekozen om gebruik te maken van de IoT\footnote{Internet of Things} LoRa\footnote{Low power Radio} techniek. Wat LoRa bijzonder maakt is dat het over lange afstand berichten over kan brengen zonder dat hiervoor een continue stroombron vereist is. Wel heeft LoRa een maximum te verzenden berichten per dag dan wel een beperkte bericht grootte. Bij dit onderzoek is er gebruik gemaakt van techniek die veelal passief de omgeving / proefpersoon in de gaten houdt. We maken hierbij geen gebruik van bijvoorbeeld camera's. Dit is zowel een belangrijk punt wat betreft de privacy en acceptatie voor monitoring systemen, maar ook doordat de sensoren die geplaatst worden normaliter op batterij werken. In het prototype is rekening gehouden met laag stroomverbruik. Zo hebben wij voor communicatie onderling tussen node en gateway gekozen voor een zeer veel gebruikte en bekende standaard namelijk die van bluetooth low energy. Zo zou het in de toekomst bijvoorbeeld ook mogelijk moeten zijn om door middel van een app een gateway dan wel sensor node te creëren zijn door slechts alleen een telefoon hiervoor te gebruiken. 
+In onze studiegroep had niemand een internet verbinding. Mede om deze reden is er gekozen om gebruik te maken van de IoT\footnote{Internet of Things} LoRa\footnote{Low power Radio} techniek. Wat LoRa bijzonder m
+aakt is dat het over lange afstand berichten over kan brengen zonder dat hiervoor een continue stroombron vereist is. Wel heeft LoRa een maximum te verzenden berichten per dag dan wel een beperkte bericht grootte. Bij dit onderzoek is er gebruik gemaakt van techniek die veelal passief de omgeving / proefpersoon in de gaten houdt. We maken hierbij geen gebruik van bijvoorbeeld camera's. Dit is zowel een belangrijk punt wat betreft de privacy en acceptatie voor monitoring systemen, maar ook doordat de sensoren die geplaatst worden normaliter op batterij werken. In het prototype is rekening gehouden met laag stroomverbruik. Zo hebben wij voor communicatie onderling tussen node en gateway gekozen voor een zeer veel gebruikte en bekende standaard namelijk die van bluetooth low energy. Zo zou het in de toekomst bijvoorbeeld ook mogelijk moeten zijn om door middel van een app een gateway dan wel sensor node te creëren zijn door slechts alleen een telefoon hiervoor te gebruiken. 
 
 \begin{figure}
 \center
