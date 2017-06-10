@@ -106,7 +106,7 @@ This section will focus on the state of the art technology as of this time (2017
 
 A surprisingly big misconception when it comes to innovation aimed specifically at the elderly community, is that this is an audience that, as a whole, wants roughly the same thing; all share similar fears, weaknesses and requirements. In reality, however, there exists a myriad of different people all with different abilities and disabilities. Some are physical, such as bone atrophy, or mental, such as dementia or a combination of the two resulting from a stroke. [Reitenbach and Schot, 2012]  As of 2015, the government of the Netherlands has aimed to reform the long-term care for the elderly in such a way that more responsibility is given to the able citizen. This changes the nature of the long-term care program to that of a package of care and support which the active population, using their own resources, can call upon in order to maintain their autonomy and age with dignity.[Campen, Iedema, Broese van Groenau and Deeg, 2017]
 
-The policy in the Netherlands and other European countries strives to enable elderly citizens to grow old in their own home and/or neighbourhood (aging in place) by use of their own resources and a package for care and welfare facilities. [Van Dijk 2015; Lower 2015;Thomas and Blanchard 2009] Despite the best efforts of fellow citizens and caregivers however, this method does not always suffice and, more importantly, does not give the loved ones of the elderly citizens in question peace of mind. This is where electronic monitoring systems get to play their part.
+The policy in the Netherlands and other European countries strives to enable elderly citizens to grow old in their own home and/or neighbourhood (aging in place) by use of their own resources and a package for care and welfare facilities. \cite{thomas_blanchard} Despite the best efforts of fellow citizens and caregivers however, this method does not always suffice and, more importantly, does not give the loved ones of the elderly citizens in question peace of mind. This is where electronic monitoring systems get to play their part.
 
 
 % =============================================================================
@@ -157,6 +157,12 @@ Dus nu hebben we de beperking van een bepaalde ruimte overwonnen door verbeterde
 % Introductie technologie.
  
 In onze studiegroep had niemand een internet verbinding. Mede om deze reden is er gekozen om gebruik te maken van de IoT\footnote{Internet of Things} LoRa\footnote{Low power Radio} techniek. Wat LoRa bijzonder maakt is dat het over lange afstand berichten over kan brengen zonder dat hiervoor een continue stroombron vereist is. Wel heeft LoRa een maximum te verzenden berichten per dag dan wel een beperkte bericht grootte. Bij dit onderzoek is er gebruik gemaakt van techniek die veelal passief de omgeving / proefpersoon in de gaten houdt. We maken hierbij geen gebruik van bijvoorbeeld camera's. Dit is zowel een belangrijk punt wat betreft de privacy en acceptatie voor monitoring systemen, maar ook doordat de sensoren die geplaatst worden normaliter op batterij werken. In het prototype is rekening gehouden met laag stroomverbruik. Zo hebben wij voor communicatie onderling tussen node en gateway gekozen voor een zeer veel gebruikte en bekende standaard namelijk die van bluetooth low energy. Zo zou het in de toekomst bijvoorbeeld ook mogelijk moeten zijn om door middel van een app een gateway dan wel sensor node te creëren zijn door slechts alleen een telefoon hiervoor te gebruiken. 
+
+\begin{figure}
+\center
+\includegraphics[width=0.4\textwidth]{dataproces.pdf}
+\caption{Schematic of the data collection process}
+\end{figure}
 
 \subsection{Open standards}
 % dit kan veel uitgebreider: wat is de toegevoegde waarde voor de ouderen, wat kan het mogelijk betekenen voor digital life centre, of geliefden van de doelgroep. Kan het studenten helpen (PORTABLE LIVING LAB) 
