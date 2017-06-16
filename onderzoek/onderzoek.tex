@@ -2,7 +2,7 @@
 
 \title{A standard for Home monitoring}
 
-\numberofauthors{5}
+\numberofauthors{4}
 \author{
   \vspace{-1.5em} 
   \alignauthor{
@@ -21,12 +21,6 @@
   }
   \vfil
   \alignauthor{
-  	\textbf{Hogeschool van Amsterdam}\\
-  	\affaddr{Wibautstraat 2-4}\\
-  	\affaddr{1091 GM, Amsterdam}\\
-  }
-  \vfil
-  \alignauthor{
   	\textbf{Glimworm IT BV}\\
   	\affaddr{Kattenburgerstraat 5}\\
   	\affaddr{1018 JA Amsterdam}\\
@@ -37,7 +31,7 @@
 % Paper metadata (use plain text, for PDF inclusion and later re-using, if desired)
 \def\plaintitle{A standard for Home monitoring}
 \def\plainauthor{Patrick Hendriks}
-\def\plainkeywords{Healthcare, Technology, Elderly}
+\def\plainkeywords{Sensor based health monitoring for the elderly, \ldots}
 \def\plaingeneralterms{Research}
 
 \hypersetup{
@@ -74,6 +68,10 @@
 In this paper the team of BeLow set out to explicate the gap between the demand for monitoring technology for the elderly, and the actual grasp upon the market. Initially a continuation of the Healthy Life Lamp project by Sven Erik Haitjema, BeLow leaned more in the direction of a portable living lab rather than one central monitoring device. 
 \end{abstract}
 
+\keywords{\plainkeywords}
+\category{H.5.m}{Information interfaces and presentation (e.g., HCI)}{Miscellaneous}. 
+%\terms{\plaingeneralterms}
+
 % =============================================================================
 \section{Introduction}
 % =============================================================================
@@ -94,7 +92,7 @@ In this paper the focus will be on answering the aforementioned question, as wel
 \item What monitoring systems are currently on the market, and what knowledge is available?
 \item  What are the wishes of the target audience when it comes to improvement of living quality using technology?
 \item How can the needs of the target audience be satisfied using technology.
-\item How does one become a standard?
+% Weet niet of we deze in de huidige vorm zo zouden moeten laten staan. De 3 punten erboven vind ik beter aansluiten. \item How does one become a standard?
 \end{itemize}
 
 This paper will begin with a report on literature and field studies performed to answer the first two of these questions. The second half will consist of reports on experiments and tests performed using prototypes. Finally, we will look to the future and, based on interviews with experts on the subject, discuss how technology may develop in the years to come and how this can be of use to society as a whole.
@@ -156,11 +154,11 @@ As part of our research, we conducted a focus group at Stedeborgh among a group 
  One of the older participants, a lady nearing her 90's, told the group she always had her alarm button with her, attached to her walker. The woman had trouble walking due to bone atrophy, but was still living independently. When asked about the stigma devices such as these carry, she responded casually: "I am an elderly woman, at my age no one should feel ashamed about carrying a device that helps them in case of emergency. You all have your cell phones too, don't you?" She also told us that the device has thus far helped her maintain her autonomy to quite an extend. She has not yet had a falling incident, but she is very well aware of the fact that she is at risk. The alarm button gives her a sense of security that has given her the confidence to continue doing the things she does. Because if she were to fall, she would be able to immediately call for aid. The majority, if not all of the respondents, agreed with her.
 
 \subsection{Monitoring}
-During this first discussion the respondents expressed a clear wish for products such as the one BeLow aimed to develop. We were told that commercial parties had come by several times already to offer their services and products. When asked for the main reason why there was never an investment in these products, the respondents had two very clear reasons. Firstly, the pricepoint; many of these products came with a hefty pricetag. Stedeborgh is an independent community run mainly by its residents, and it simply couldn't afford to spend up to thousands of euros on products that piqued their interest, but had not yet proven their worth to the community's satisfaction. More importantly, however, the respondents stressed the fact that the systems often lacked transparency. Many of the presented solutions made use of cameras, which aroused a sense of uneasiness in the users. One man told us that even though he was ensured that the visual data captured would be analyzed by algorithms rather than people, this did not take away the feeling of being watched. "The word algorithm doesn't give me any idea of what is happening inside," he said half jokingly. "If you tell me an algorithm is analyzing my video feed, you might as well just tell me a midget or a ghost is watching me." Many of the respondents agreed that the systems were not transparent enough, and not only because they were described using terminology which did not resonate with them. Some even went as far as to admit the way the systems were designed made them feel like children being watched. "Most of these systems are made in such a way that they will provide reports about your wellbeing to a caretaker or a doctor. I do not want that. If I am feeling under the weather I would much rather have my daughter calling me to see if I am doing ok than have a nurse rush in to usher me out of bed because I am 'not getting enough exercize'," one of the relatively younger women stated. 
+During this first discussion the respondents expressed a clear wish for products such as the one BeLow aimed to develop. We were told that commercial parties had come by several times already to offer their services and products. When asked for the main reason why there was never an investment in these products, the respondents had two very clear reasons. Firstly, the price point; many of these products came with a hefty pricetag. Stedeborgh is an independent community run mainly by its residents, and it simply couldn't afford to spend up to thousands of euros on products that piqued their interest, but had not yet proven their worth to the community's satisfaction. More importantly, however, the respondents stressed the fact that the systems often lacked transparency. Many of the presented solutions made use of cameras, which aroused a sense of uneasiness in the users. One man told us that even though he was ensured that the visual data captured would be analyzed by algorithms rather than people, this did not take away the feeling of being watched. "The word algorithm doesn't give me any idea of what is happening inside," he said half jokingly. "If you tell me an algorithm is analyzing my video feed, you might as well just tell me a midget or a ghost is watching me." Many of the respondents agreed that the systems were not transparent enough, and not only because they were described using terminology which did not resonate with them. Some even went as far as to admit the way the systems were designed made them feel like children being watched. "Most of these systems are made in such a way that they will provide reports about your wellbeing to a caretaker or a doctor. I do not want that. If I am feeling under the weather I would much rather have my daughter calling me to see if I am doing ok than have a nurse rush in to usher me out of bed because I am 'not getting enough exercize'," one of the relatively younger women stated. 
 
 \begin{figure}
 \center
-\label{fig2:interview}
+\label{fig:interview}
 \includegraphics[width=0.5\textwidth]{interview}
 \caption{Interview Group}
 \end{figure}
@@ -204,10 +202,10 @@ Met het gebruik van voornamelijk open standaarden willen we zorgen dat in de toe
 
 %-----------------
 \subsection{Goal}
-Wat we met dit onderzoek willen bereiken is kijken of het mogelijk is de oplossingen die er zijn in de vorm van dure commerciële technologieën in de vorm van community based platformen te gieten. Tegelijkertijd moeten we ons ervan bewust zijn dat bepaalde specialistische hulp of technologie altijd nodig zal zijn. Met de in de laatste paar jaren steeds meer beschikbaar geworden platformen zoals Arduino, Raspberry Pi en de vele sensoren willen we gebruik maken van deze opties voor onder andere de zorg. De data die doorgaans met dit soort platformen vergaart worden zijn in bepaalde gevallen niet secuur genoeg om echt kennis uit te halen in individuele gevallen. Technologieën zoals Machine based learning bieden hiervoor een uitkomst. Zo kunnen er verbanden worden gevonden en aangetoond die er uiteindelijk voor zorgen dat data bruikbare informatie wordt. Ons platform bied een methode om heel veel data te vergaren. Met specialisten, machine based learning en onderzoekers is het uiteindelijk de bedoeling om dit om te vormen naar informatie, kennis en wijsheid\ref{fig1:dikw}. Wanneer we deze kennis bezitten kunnen we veel beter preventief te werk gaan dan puur alleen registeren van gebeurtenissen. Het gebruik van dit platform moet er dan niet alleen voor zorgen dat de kosten van de zorg afnemen maar dat er ook beter gelet wordt op de wensen van hulpbehoevenden. Het aantal fouten wat gemaakt wordt door menselijk handelen is hierdoor te verminderen. Ook is een computer zich beter bewust van subtiele veranderingen dan dat mensen dat kunnen waarnemen. 
+Wat we met dit onderzoek willen bereiken is kijken of het mogelijk is de oplossingen die er zijn in de vorm van dure commerciële technologieën in de vorm van community based platformen te gieten. Tegelijkertijd moeten we ons ervan bewust zijn dat bepaalde specialistische hulp of technologie altijd nodig zal zijn. Met de in de laatste paar jaren steeds meer beschikbaar geworden platformen zoals Arduino, Raspberry Pi en de vele sensoren willen we gebruik maken van deze opties voor onder andere de zorg. De data die doorgaans met dit soort platformen vergaart worden zijn in bepaalde gevallen niet secuur genoeg om echt kennis uit te halen in individuele gevallen. Technologieën zoals Machine based learning bieden hiervoor een uitkomst. Zo kunnen er verbanden worden gevonden en aangetoond die er uiteindelijk voor zorgen dat data bruikbare informatie wordt. Ons platform bied een methode om heel veel data te vergaren. Met specialisten, machine based learning en onderzoekers is het uiteindelijk de bedoeling om dit om te vormen naar informatie, kennis en wijsheid\ref{fig:dikw}. Wanneer we deze kennis bezitten kunnen we veel beter preventief te werk gaan dan puur alleen registeren van gebeurtenissen. Het gebruik van dit platform moet er dan niet alleen voor zorgen dat de kosten van de zorg afnemen maar dat er ook beter gelet wordt op de wensen van hulpbehoevenden. Het aantal fouten wat gemaakt wordt door menselijk handelen is hierdoor te verminderen. Ook is een computer zich beter bewust van subtiele veranderingen dan dat mensen dat kunnen waarnemen. 
 \begin{figure}
 \center
-\label{fig1:dikw}
+\label{fig:dikw}
 \includegraphics[width=0.4\textwidth]{dikw}
 \caption{Data Information Knowledge Wisdom model}
 \end{figure}
