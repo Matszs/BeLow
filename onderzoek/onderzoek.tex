@@ -1,4 +1,6 @@
 \documentclass{below-ext}
+\usepackage{float}
+
 
 \title{A standard for Home monitoring}
 
@@ -211,6 +213,16 @@ In dit onderzoek zijn we uitgegaan van een technologische oplossing die voorname
 \end{figure}
 Bij figuur\ref{fig:floorplan} hebben we 3 gebruikt die data verzamelde. De sensoren waren op een strategische plek geplaatst om de meest interessante data te bemachtigen.
 \section{Data analysis}
+\subsection{Sensor data}
+In dit onderzoek wilde we achterhalen hoe lang een batterij de sensor node kon voorzien van genoeg stroom om langere periodes data te verzamelen. Hoewel we voor de techniek kant en klare producten hebben gebruikt zijn de resultaten nog best goed te noemen. De data zelf was verzameld met een interval van ongeveer 30 seconden voor wat betreft de temperatuur. Voor wat betreft beweging en deur openingen wordt dit door middel van triggers verzameld. Er wordt in theorie dus niks verbruikt tijdens deze opties. Omdat we meerdere sensor nodes gebruikten in plaats van een enkele node te voorzien van meerdere sensoren wat ook een opties was, hebben we alleen de temperatuur pollende sensor gebruikt om de batterij realistisch te kunnen stresstesten. De gemeette temperatuur in figuur\ref{fig:temp} laat data zien van dat er een fout is geweest in het systeem tussen 24-5 00:00 en 24-5 12:00
+We hebben kunnen achterhalen dat de temperatuur sensor een onrealistisch waarde heeft gemeten en achterwege gelaten. We begonnen 22-5-2017 met een batterij capaciteit van 2300mah en 26-5-2017 was het nog 2088 mah. Dat betekend dat we slecht een verbruik hebben van 212 mAh over 4 dagen en per dag komen we uit op $\pm$ 53 mAh 
+
+\begin{figure}[t]
+\centering
+\label{fig:temp}
+\includegraphics[width=1\textwidth]{graph}
+\caption{Temperature graph}
+\end{figure}
 \section{Conclusion}
 
 \section{Future work}
