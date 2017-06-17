@@ -1,0 +1,12 @@
+set terminal postscript eps enhanced color font 'Helvetica,10'
+set output 'data.eps'
+set title "BeLow temp sensor"
+set ylabel "Temp (°C)"
+set xlabel "Time"
+set xtics rotate
+set xdata time
+set timefmt "%s"
+set grid
+set key off
+set format x "%Y-%m-%d %H:%M"
+plot "gnuplot_fmt.dat" using 1:3 with lines lc rgb "#aaaaaa"
