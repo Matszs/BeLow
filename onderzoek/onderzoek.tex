@@ -94,7 +94,7 @@ In this paper the focus will be on answering the aforementioned question, as wel
 \item How can the needs of the target audience be satisfied using technology.
 % Weet niet of we deze in de huidige vorm zo zouden moeten laten staan. De 3 punten erboven vind ik beter aansluiten. \item How does one become a standard?
 \end{itemize}
-
+%hieronder wordt nu geplaat over first two and second half. zin moet vanwege hierboven dan ook aangepast.
 This paper will begin with a report on literature and field studies performed to answer the first two of these questions. The second half will consist of reports on experiments and tests performed using prototypes. Finally, we will look to the future and, based on interviews with experts on the subject, discuss how technology may develop in the years to come and how this can be of use to society as a whole.
 
 
@@ -174,12 +174,12 @@ Tegenwoordig hebben ouderen ook de mogelijkheid een nekhanger te dragen die een 
 Dus nu hebben we de beperking van een bepaalde ruimte overwonnen door verbeterde technologieen. Met het sinds 2016 landelijk dekende LoRa netwerk is het nu ook mogelijk een alarmknop overal mee te nemen zonder bang te zijn dat de batterij misschien niet is opgeladen. In het het geval van ouderen is het nog geen gemeengoed dat zij ook een internetverbinding hebben laat staan eentje op zak. Hier komt mogelijk in de toekomst verandering in doordat de generaties van nu opgroeien met internet.
 % Introductie technologie.
  
-In onze studiegroep had niemand een internet verbinding. Mede om deze reden is er gekozen om gebruik te maken van de IoT\footnote{Internet of Things} LoRa\footnote{Low power Radio} techniek. Wat LoRa bijzonder m
-aakt is dat het over lange afstand berichten over kan brengen zonder dat hiervoor een continue stroombron vereist is. Wel heeft LoRa een maximum te verzenden berichten per dag dan wel een beperkte bericht grootte. Bij dit onderzoek is er gebruik gemaakt van techniek die veelal passief de omgeving / proefpersoon in de gaten houdt. We maken hierbij geen gebruik van bijvoorbeeld camera's. Dit is zowel een belangrijk punt wat betreft de privacy en acceptatie voor monitoring systemen, maar ook doordat de sensoren die geplaatst worden normaliter op batterij werken. In het prototype is rekening gehouden met laag stroomverbruik. Zo hebben wij voor communicatie onderling tussen node en gateway gekozen voor een zeer veel gebruikte en bekende standaard namelijk die van bluetooth low energy. Zo zou het in de toekomst bijvoorbeeld ook mogelijk moeten zijn om door middel van een app een gateway dan wel sensor node te creëren zijn door slechts alleen een telefoon hiervoor te gebruiken. 
+In onze studiegroep had niemand een internet verbinding. Mede om deze reden is er gekozen om gebruik te maken van de IoT\footnote{Internet of Things} LoRa\footnote{Low power Radio} techniek. Wat LoRa bijzonder maakt is dat het over lange afstand berichten over kan brengen zonder dat hiervoor een continue stroombron vereist is. Wel heeft LoRa een maximum te verzenden berichten per dag dan wel een beperkte bericht grootte. Bij dit onderzoek is er gebruik gemaakt van techniek die veelal passief de omgeving / proefpersoon in de gaten houdt. We maken hierbij geen gebruik van bijvoorbeeld camera's. Dit is zowel een belangrijk punt wat betreft de privacy en acceptatie voor monitoring systemen, maar ook doordat de sensoren die geplaatst worden normaliter op batterij werken. In het prototype is rekening gehouden met laag stroomverbruik. Zo hebben wij voor communicatie onderling tussen node en gateway gekozen voor een zeer veel gebruikte en bekende standaard namelijk die van bluetooth low energy. Doordat Bluetooth low energy in zoveel apparaten aanwezig zijn kunnen deze makkelijk aan een netwerk van sensoren worden toegevoegd. De data die opgehaald wordt van de sensoren wordt naar de gateway verstuurd. Deze gateway kun je het beste zien en omschrijven als een gewone internet router. Deze zorgt er namelijk voor dat de data buitenshuis komt, en uiteindelijk bij de Cloud terecht. Waarnaar de Cloud op beslissingen gebaseerd op algoritmes en voorkeuren een event genereerd en bijvoorbeeld de gebruiker zelf dan wel de contactpersoon bericht.
 
 \begin{figure}
-\center
-\includegraphics[width=0.4\textwidth]{dataproces.pdf}
+\label{fig:process}
+\centering
+\includegraphics[scale=0.6]{dataproces.pdf}
 \caption{Schematic of the data collection process}
 \end{figure}
 
@@ -198,7 +198,7 @@ Wat we met dit onderzoek willen bereiken is kijken of het mogelijk is de oplossi
 \begin{figure}
 \center
 \label{fig:dikw}
-\includegraphics[width=0.4\textwidth]{dikw.pdf}
+\includegraphics[width=0.4\textwidth]{dikw}
 \caption{Data Information Knowledge Wisdom model}
 \end{figure}
 \section{What we have done}
