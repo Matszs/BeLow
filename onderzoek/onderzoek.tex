@@ -89,7 +89,7 @@ The demographic in the Netherlands is changing; the rising number of elderly cit
 For the past several years, the changing demographic in the Netherlands has raised many concerns. The growing number of elderly people living alone and the question of how to care for the aging population have caused a surge of technological developments aimed specifically at this target audience. However, even if a demand for ambient intelligence based systems such as these, the market does not quite seem to take off in the way that most developers hope for. Conduction of several focus groups among elderly people living independently has proven that the demand exists, yet is often not satisfied by what is currently on offer. Various systems target the caregivers of those that will actually be using the product, rather than the users themselves. It has become apparent that a large portion of the elderly population wishes to be respected in their autonomy, and take matters into their own hands.\cite{cbs_households}
 
 \begin{figure}
-\center
+\centering
 \includegraphics[width=0.5\textwidth]{cbs_household_age_report}
 \caption[Translated graph]{Translated graph from CBS\footnotemark }
 \end{figure}
@@ -180,7 +180,7 @@ During this first discussion the respondents expressed a clear wish for products
 "Most of these systems are made in such a way that they will provide reports about your well being to a caretaker or a doctor. I do not want that. If I am feeling under the weather I would much rather have my daughter calling me to see if I am doing ok than have a nurse rush in to usher me out of bed because I am 'not getting enough exercise'," one of the relatively younger women stated. 
 
 \begin{figure}
-\center
+\centering
 \label{fig:interview}
 \includegraphics[width=0.5\textwidth]{interview}
 \caption{Interview Group}
@@ -223,15 +223,16 @@ Because of LoRa's restrictions when it comes to message frequency, only the gate
 Met het gebruik van voornamelijk open standaarden willen we zorgen dat in de toekomst ontwikkelaars en hobbyisten zich willen bezig houden met het ondersteunen onderhouden en uitbreiden van de mogelijkheden. Zoals het platform nu is ingericht is er nog weinig spannends vast te leggen. Een van de toepassingen die we graag zien is om mensen te kunnen laten inter-acteren met het platform. Er voor kunnen zorgen dat het niet alleen voor zorg specialisten een handige tool is. Maar dat de mensen waarom het gaat er ook iets nuttigs in zien. Hoewel de Google Home en de Amazon Alexa geen (echte) open standaard zijn zou je wel kunnen denken aan een soort personal assistent die er ook voor zorgt dat je je pillen op tijd inneemt. Tegelijkertijd is er een sensor in de pillendoos die opmerkt dat ze inderdaad ingenomen zijn. Deze data is uitermate geschikt voor het platform en makkelijk toe te voegen.
 \subsubsection{Data Proces}
 \begin{figure}
-\center
+\centering
 \includegraphics[width=0.2\textwidth]{process}
+\caption{Data proces}
 \end{figure}
 
 %-----------------
 \subsection{Goal}
 Wat we met dit onderzoek willen bereiken is kijken of het mogelijk is de oplossingen die er zijn in de vorm van dure commerciële technologieën in de vorm van community based platformen te gieten. Tegelijkertijd moeten we ons ervan bewust zijn dat bepaalde specialistische hulp of technologie altijd nodig zal zijn. Met de in de laatste paar jaren steeds meer beschikbaar geworden platformen zoals Arduino, Raspberry Pi en de vele sensoren willen we gebruik maken van deze opties voor onder andere de zorg. De data die doorgaans met dit soort platformen vergaart worden zijn in bepaalde gevallen niet secuur genoeg om echt kennis uit te halen in individuele gevallen. Technologieën zoals Machine based learning bieden hiervoor een uitkomst. Zo kunnen er verbanden worden gevonden en aangetoond die er uiteindelijk voor zorgen dat data bruikbare informatie wordt. Ons platform bied een methode om heel veel data te vergaren. Met specialisten, machine based learning en onderzoekers is het uiteindelijk de bedoeling om dit om te vormen naar informatie, kennis en wijsheid\ref{fig:dikw}. Wanneer we deze kennis bezitten kunnen we veel beter preventief te werk gaan dan puur alleen registeren van gebeurtenissen. Het gebruik van dit platform moet er dan niet alleen voor zorgen dat de kosten van de zorg afnemen maar dat er ook beter gelet wordt op de wensen van hulpbehoevenden. Het aantal fouten wat gemaakt wordt door menselijk handelen is hierdoor te verminderen. Ook is een computer zich beter bewust van subtiele veranderingen dan dat mensen dat kunnen waarnemen. 
 \begin{figure}
-\center
+\centering
 \label{fig:dikw}
 \includegraphics[width=0.4\textwidth]{dikw}
 \caption{Data Information Knowledge Wisdom model}
@@ -255,7 +256,7 @@ In de woning van 1 van onze testpersonen hebben we 3 sensors gebruikt die data v
 
 \section{Data analysis}
 \subsection{Sensor data}
-In dit onderzoek wilde we achterhalen hoe lang een batterij de sensor node kon voorzien van genoeg stroom om langere periodes data te verzamelen. Hoewel we voor de techniek kant en klare producten hebben gebruikt zijn de resultaten nog best goed te noemen. De data zelf was verzameld met een interval van ongeveer 30 seconden voor wat betreft de temperatuur. Voor wat betreft beweging en deur openingen wordt dit door middel van triggers verzameld. Er wordt in theorie dus niks verbruikt tijdens deze opties. Omdat we meerdere sensor nodes gebruikten in plaats van een enkele node te voorzien van meerdere sensoren wat ook een opties was, hebben we alleen de temperatuur pollende sensor gebruikt om de batterij realistisch te kunnen stresstesten. De gemeette temperatuur in figuur\ref{fig:temp} laat data zien van dat er een fout is geweest in het systeem tussen 24-5 00:00 en 24-5 12:00
+In dit onderzoek wilde we achterhalen hoe lang een batterij de sensor node kon voorzien van genoeg stroom om langere periodes data te verzamelen. De data zelf was verzameld met een interval van ongeveer 30 seconden voor wat betreft de temperatuur. Voor wat betreft beweging en deur openingen wordt dit door middel van triggers verzameld. Er wordt in theorie dus niks verbruikt tijdens deze opties. We hebben we alleen de temperatuur sensor gebruikt om de batterij realistisch te kunnen stress testen. De gemeette temperatuur in figuur\ref{fig:temp} laat data zien van  24-5-2017 00:00 en 24-5-2017 12:00.
 We hebben kunnen achterhalen dat de temperatuur sensor een onrealistisch waarde heeft gemeten en achterwege gelaten. We begonnen 22-5-2017 met een batterij capaciteit van 2300mah en 26-5-2017 was het nog 2088 mah. Dat betekend dat we slecht een verbruik hebben van 212 mAh over 4 dagen en per dag komen we uit op $\pm$ 53 mAh 
 
 \begin{figure}
