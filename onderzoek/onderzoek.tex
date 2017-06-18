@@ -1,6 +1,4 @@
 \documentclass{below-ext}
-\usepackage{float}
-
 
 \title{A standard for Home monitoring}
 
@@ -59,6 +57,8 @@
 \usepackage{epstopdf}
 \usepackage{amssymb}
 \usepackage{pifont}% http://ctan.org/pkg/pifont
+\usepackage{float}
+\usepackage{tikz}
 \newcommand{\cmark}{\ding{51}}%
 \newcommand{\xmark}{\ding{55}}%
 
@@ -106,13 +106,14 @@ In this paper the focus will be on answering the aforementioned question, as wel
 % Weet niet of we deze in de huidige vorm zo zouden moeten laten staan. De 3 punten erboven vind ik beter aansluiten. \item How does one become a standard?
 \end{itemize}
 %hieronder wordt nu geplaat over first two and second half. zin moet vanwege hierboven dan ook aangepast.
-This paper will begin with a report on literature and field studies performed to answer the first two of these questions. The second half will consist of reports on experiments and tests performed using prototypes. Finally, we will look to the future and, based on interviews with experts on the subject, discuss how technology may develop in the years to come and how this can be of use to society as a whole.
+This paper will begin with a report on literature and field studies performed to answer the first two of these questions. The third part will consist of reports on experiments and tests performed using prototypes. 
+%Finally, we will look to the future and, based on interviews with experts on the subject, discuss how technology may develop in the years to come and how this can be of use to society as a whole.
 
 
 % =============================================================================
 \section{Related Work}
 % =============================================================================
-This section will focus on the state of the art technology as of this time (2017), as well as the current situation of Elderly care for senior citizens that are living independently or semi-independently in living groups. The first half of this section will illustrate how the care and national budget for this care are managed, what tools are frequently being used and what gaps are currently being encountered. Furthermore we will investigate how independent living groups have developed their own systems for keeping everyone healthy and autonomous. The second half of this section will briefly summarize the current state of the art technology, what advantages they offer the user, and what disadvantages are being encountered.
+%This section will focus on the state of the art technology as of this time (2017), as well as the current situation of Elderly care for senior citizens that are living independently or semi-independently in living groups. The first half of this section will illustrate how the care and national budget for this care are managed, what tools are frequently being used and what gaps are currently being encountered. Furthermore we will investigate how independent living groups have developed their own systems for keeping everyone healthy and autonomous. The second half of this section will briefly summarize the current state of the art technology, what advantages they offer the user, and what disadvantages are being encountered.
 
 
 
@@ -148,11 +149,13 @@ Of course, these are all relatively simple systems focusing on one particular el
 
 \subsection{Stedeborgh}
 
-Before the creation of the prototype we visited Stedeborgh, an independent living community for the elderly, to gather some first hand insights and information. Stedeborgh is an independent living community situated in Grootebroek, the Netherlands.  It is not your standard nursing home; it is for the elderly, by the elderly. The residents live alone or in couples in fully fledged apartments, meaning each apartment has its own kitchen and bathroom as well. The apartments face to the inside of the complex, rather than to the outside, and are connected by an indoor garden featuring tropical foliage and equally tropical temperatures\ref{fig:stedeborgh}. on the ground floor is a large entertainment hall which is perfect for get-togethers, and a cafeteria for special events. The complex is surrounded by a lovely community garden. What makes Stedeborgh stand out most, however, is the way in which the residents look out for each other.
+Before the creation of the prototype we visited Stedeborgh, an independent living community for the elderly, to gather some first hand insights and information. Stedeborgh is an independent living community situated in Grootebroek, the Netherlands.  It is not your standard nursing home; it is for the elderly, by the elderly. The residents live alone or in couples in fully fledged apartments, meaning each apartment has its own kitchen and bathroom as well. The apartments face to the inside of the complex, rather than to the outside, and are connected by an indoor garden featuring tropical foliage and equally tropical temperatures\ref{fig:stedeborgh}. on the ground floor is a large entertainment hall which is perfect for get-togethers, and a cafeteria for special events. The complex is surrounded by a lovely community garden. What makes Stedeborgh stand out most, however, is the way in which the residents look out for each other.\\
+\vspace{0.2cm}
 \begin{figure}
+\centering
 \label{fig:stedeborgh}
-\includegraphics[width=0.5\textwidth]{stedeborgh}
-\caption{test}
+\includegraphics[width=0.45\textwidth]{stedeborgh}
+\caption{Stedeborgh courtyard}
 \end{figure}
 
 \subsection{Systems}
@@ -202,7 +205,9 @@ Over the past decades technology has changed the face of domestic life. Devices 
 \subsection{Technology in the prototype}
 The goal for the prototype was to make it portable and scalable. We designed the system hierarchy in such a way that each individual system would consist of a single gateway with cloud connectivity to funnel the data gathered within a home into a single database. This gateway  in turn is able to receive data from several sensor 'nodes' that can be added or subtracted at will and are placed throughout the user's home. 
  
-The advance of technology does not move equally fast everywhere, however. It quickly became apparent that when designing a system that is required to push the data it gathers to a central point one cannot always rely on the Internet as a transmission medium. Many of the nursing homes, living communities or independent respondents that were contacted during the pre-design phase did not have an Internet connection in every home, or none at all. This led us to believe that it would be a safe bet to incorporate the IoT\footnote{Internet of Things} LoRa\footnote{Low power Radio} technologies into the prototype to ensure that it would not malfunction due to a poor connection. As of 2016, KPN offers complete LoRa connectivity throughout the Netherlands, and this coverage will only continue to grow. LoRa is able to transmit messages over distances of up to 10 KM whithout a continuous or heavy duty power source. A drawback to this transmission method would be the limitations on message size and message frequency. This means that it is impossible  to send continuous streams of data, or large quantities of data; such as graphical camera recordings. 
+The advance of technology does not move equally fast everywhere, however. It quickly became apparent that when designing a system that is required to push the data it gathers to a central point one cannot always rely on the Internet as a transmission medium. Many of the nursing homes, living communities or independent respondents that were contacted during the pre-design phase did not have an Internet connection in every home, or none at all. This led us to believe that it would be a safe bet to incorporate the IoT\footnote{Internet of Things} LoRa\footnote{Low power Radio} technologies into the prototype to ensure that it would not malfunction due to a poor connection. As of 2016, KPN offers complete LoRa connectivity throughout the Netherlands, and this coverage will only continue to grow. LoRa is able to transmit messages over distances of up to 10 KM whithout a continuous or heavy duty power source. 
+% misschien inderdaad dat negatieve achterwege laten? zoals mats ook al zei
+A drawback to this transmission method would be the limitations on message size and message frequency. This means that it is impossible  to send continuous streams of data, or large quantities of data; such as graphical camera recordings. 
 
 Because of LoRa's restrictions when it comes to message frequency, only the gateway uses LoRa for communication. The nodes communicate with the gateway through Bluetooth low energy. This relatively new incarnation of Bluetooth consumes minimal power, which is of the utmost importance because the nodes are battery powered. To conserve energy the nodes remain in deep sleep mode until they receive input from one of their  'trigger' sensors. These are the sensors that indicate that the user is in the room and that data should be recorded. the node will then broadcast its acquired data to the gateway, which filters it and prepares it for LoRa transmission. These complex tasks are not performed by the nodes in order to conserve energy.  
 
@@ -236,10 +241,18 @@ In dit onderzoek zijn we uitgegaan van een technologische oplossing die voorname
 \subsection{Room monitoring}
 \begin{figure}
 \label{fig:floorplan}
-\includegraphics[width=0.4\textwidth]{floorplan.png}
+\begin{tikzpicture}
+\node[inner sep=0pt] (russell) at (0,0)
+    {\includegraphics[width=0.5\textwidth]{floorplan.png}};
+\draw[fill=purple] (1.5,0.6) circle (0.3cm);
+\draw[fill=blue] (-3.1,2.9) circle (0.3cm);
+\draw[fill=purple] (3.5,-2.6) circle (0.3cm);
+\draw[fill=purple] (-2.5,-1.6) circle (0.3cm);
+\end{tikzpicture}
 \caption{Floorplan of field-test}
 \end{figure}
-Bij figuur\ref{fig:floorplan} hebben we 3 gebruikt die data verzamelde. De sensoren waren op een strategische plek geplaatst om de meest interessante data te bemachtigen.
+In de woning van 1 van onze testpersonen hebben we 3 sensors gebruikt die data verzamelde. De sensoren waren op een strategische plek geplaatst om de meest interessante data te bemachtigen. Bij figuur \ref{fig:floorplan} is de indeling van de woning te zien en daarnaast is aangegeven waar in de woning de sensoren geplaatst zijn.
+
 \section{Data analysis}
 \subsection{Sensor data}
 In dit onderzoek wilde we achterhalen hoe lang een batterij de sensor node kon voorzien van genoeg stroom om langere periodes data te verzamelen. Hoewel we voor de techniek kant en klare producten hebben gebruikt zijn de resultaten nog best goed te noemen. De data zelf was verzameld met een interval van ongeveer 30 seconden voor wat betreft de temperatuur. Voor wat betreft beweging en deur openingen wordt dit door middel van triggers verzameld. Er wordt in theorie dus niks verbruikt tijdens deze opties. Omdat we meerdere sensor nodes gebruikten in plaats van een enkele node te voorzien van meerdere sensoren wat ook een opties was, hebben we alleen de temperatuur pollende sensor gebruikt om de batterij realistisch te kunnen stresstesten. De gemeette temperatuur in figuur\ref{fig:temp} laat data zien van dat er een fout is geweest in het systeem tussen 24-5 00:00 en 24-5 12:00
