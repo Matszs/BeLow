@@ -177,7 +177,13 @@ During this first discussion the respondents expressed a clear wish for products
 % =============================================================================
 \section{Practical testing}
 % =============================================================================
-The prototype was focused around scalability, meaning that sensors could quickly be added and removed without the need for tools. The main controller used, the Sodaq Autonomo, and its compatible Grove shield enabled this. The Grove modules created by Sodaq made it possible to entertain a plug-and-play approach, so that the prototype could we adjusted whenever needed. (HIER FOTO'S VAN GROVE EN AUTONOMO IK WEET NIET HOE DAT MOET) During the usability testing phase the sensor technology was kept relatively simple. The nodes were equipped with a passive infrared sensor, a light sensor, a temperature sensor, and an optional magnetig door sensor to monitor the opening of doors and windows. Each respondent was then supplied with a single gateway and two nodes that were to be strategically placed in their living area. The group of respondents consisted of elderly couples, single elderly people, and students. % Hier moet wat meer verzonnen detail in...
+The prototype was focused around scalability, meaning that sensors could quickly be added and removed without the need for tools. The main controller used, the Sodaq Autonomo, and its compatible Grove shield enabled this. The Grove modules created by Sodaq made it possible to entertain a plug-and-play approach, so that the prototype could we adjusted whenever needed. 
+\begin{figure}
+\label{fig:sodaq}
+\includegraphics[width=0.5\textwidth]{sodaq}
+\caption{Sodaq prototype}
+\end{figure}
+sensor technology was kept relatively simple. The nodes were equipped with a passive infrared sensor, a light sensor, a temperature sensor, and an optional magnetig door sensor to monitor the opening of doors and windows. Each respondent was then supplied with a single gateway and two nodes that were to be strategically placed in their living area. The group of respondents consisted of elderly couples, single elderly people, and students. % Hier moet wat meer verzonnen detail in...
 
 %==============================================================================
 \section{Technology}
@@ -232,13 +238,21 @@ Bij figuur\ref{fig:floorplan} hebben we 3 gebruikt die data verzamelde. De senso
 In dit onderzoek wilde we achterhalen hoe lang een batterij de sensor node kon voorzien van genoeg stroom om langere periodes data te verzamelen. Hoewel we voor de techniek kant en klare producten hebben gebruikt zijn de resultaten nog best goed te noemen. De data zelf was verzameld met een interval van ongeveer 30 seconden voor wat betreft de temperatuur. Voor wat betreft beweging en deur openingen wordt dit door middel van triggers verzameld. Er wordt in theorie dus niks verbruikt tijdens deze opties. Omdat we meerdere sensor nodes gebruikten in plaats van een enkele node te voorzien van meerdere sensoren wat ook een opties was, hebben we alleen de temperatuur pollende sensor gebruikt om de batterij realistisch te kunnen stresstesten. De gemeette temperatuur in figuur\ref{fig:temp} laat data zien van dat er een fout is geweest in het systeem tussen 24-5 00:00 en 24-5 12:00
 We hebben kunnen achterhalen dat de temperatuur sensor een onrealistisch waarde heeft gemeten en achterwege gelaten. We begonnen 22-5-2017 met een batterij capaciteit van 2300mah en 26-5-2017 was het nog 2088 mah. Dat betekend dat we slecht een verbruik hebben van 212 mAh over 4 dagen en per dag komen we uit op $\pm$ 53 mAh 
 
-\begin{figure}[t]
+\begin{figure}
 \centering
 \label{fig:temp}
 \includegraphics[width=0.5\textwidth]{graph}
 \caption{Temperature graph}
 \end{figure}
+\begin{figure}
+\centering
+\label{fig:doorsensor}
+\includegraphics[width=0.5\textwidth]{doorsensor}
+\caption{Door sensor recordings}
+\end{figure}
+
 \section{Conclusion}
+
 
 \section{Future work}
 Wat er in dit onderzoek nog niet gebeurd is, maar wat wel duidelijk naar voren kwam bij de interviews is het terugkoppelen van data. Zo wordt er veel aandacht besteed aan het koppelen van data en gedragingen van de personen in kwestie. Maar de personen krijgen deze data zelf niet te zien. In plaats daarvan krijgen ze adviezen van medisch specialisten wanneer deze ook al sneller en beter gepresenteerd zou moeten kunnen worden bij de persoon zelf. Hiervoor is wel vereist dat er een makkelijk te begrijpen interface wordt bedacht die deze mensen in staat stelt met die informatie zelf hen gedrag kunnen aanpassen.
