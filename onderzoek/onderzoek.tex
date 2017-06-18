@@ -67,7 +67,7 @@
 \maketitle
 
 \begin{abstract}
-In this paper the team of BeLow set out to explicate the gap between the demand for monitoring technology for the elderly, and the actual grasp upon the market. Initially a continuation of the Healthy Life Lamp project by Sven Erik Haitjema, BeLow leaned more in the direction of a portable living lab rather than one central monitoring device. 
+In this paper our team set out to explicate the gap between the demand for monitoring technology for the elderly, and the actual grasp upon the market. Initially a continuation of the Healthy Life Lamp project by Sven Erik Haitjema, we leaned more in the direction of a portable living lab rather than one central monitoring device. 
 \end{abstract}
 
 \keywords{\plainkeywords}
@@ -77,17 +77,18 @@ In this paper the team of BeLow set out to explicate the gap between the demand 
 % =============================================================================
 \section{Introduction}
 % =============================================================================
-For the past several years, the changing demographic in the Netherlands has raised many concerns. The growing number of elderly people living alone and the question of how to care for the ageing population have caused a surge of technological developments aimed specifically at this target audience. However, even if a demand for ambient intelligence based systems such as these, the market does not quite seem to take off in the way that most developers hope for. Conduction of several focus groups among elderly people living independently has proven that the demand exists, yet is often not satisfied by what is currently on offer. Various systems target the caregivers of those that will actually be using the product, rather than the users themselves. It has become apparent that a large portion of the elderly population wishes to be respected in their autonomy, and take matters into their own hands.\cite{cbs_households}
+For the past several years, the changing demographic in the Netherlands has raised many concerns\cite{cbs_households}. The growing number of elderly people living alone and the question of how to care for the ageing population have caused a surge of technological developments aimed specifically at this target audience. However, even if a demand for ambient intelligence based systems such as these, the market does not quite seem to take off in the way that most developers hope for. Conduction of several focus groups among elderly people living independently has proven that the demand exists, yet is often not satisfied by what is currently on offer. Various systems target the caregivers of those that will actually be using the product, rather than the users themselves. It has become apparent that a large portion of the elderly population wishes to be respected in their autonomy, and take matters into their own hands.
 
 \begin{figure}
-\center
+\label{fig:cbs}
+\centering
 \includegraphics[width=0.5\textwidth]{cbs_household_age_report}
 \caption[Translated graph]{Translated graph from CBS\footnotemark }
 \end{figure}
 \footnotetext{Central bureau of statistics of the Netherlands}
-The products available are also specifically targeted at an elderly audience, even though they would be able to cater a much more diverse group of users. Therefore, the goal of BeLow is to lay the foundation for a portable living lab; a standard kit that can be used by anyone, even those with minimal technical experience, and that can be expanded upon by those that wish to do so.
+The products available are also specifically targeted at an elderly audience, even though they would be able to cater a much more diverse group of users. Therefore, the goal of us is to lay the foundation for a portable living lab; a standard kit that can be used by anyone, even those with minimal technical experience, and that can be expanded upon by those that wish to do so.
 
-A major part of this research was performed within Stedeborgh; a living community by the elderly for the elderly. Stedeborgh is a largely autonomous community, with residents aged 67 and up. For this paper several tests, focus groups and interviews were conducted among the residents, and their sentiments, routines and opinions have played a big part in the decisions that were made. Aside from Stedeborgh, this research was performed in collaboration with Amsterdam's Digital Life Centre's project BRAVO (led by Saskia Robben, 1 Apr 2016 - 1 Apr 2018) and Glimworm Information Technology (Adrian Blackwood). Collectively, the question we ask ourselves is: "How can we develop an accessible standard with which to add a layer of intelligence to the living environment?" 
+A major part of this research was performed within Stedeborgh; a living community by the elderly for the elderly. Stedeborgh is a largely autonomous community, with residents aged 67 and up. For this paper several experiments, focus group and interviews were conducted among the residents, and their sentiments, routines and opinions have played a big part in the decisions that were made. Aside from Stedeborgh, this research was performed in collaboration with Amsterdam's Digital Life Centre's project BRAVO (led by Saskia Robben, 1 Apr 2016 - 1 Apr 2018) and Glimworm Information Technology (Adrian Blackwood). Collectively, the question we ask ourselves is: "How can we develop an accessible standard with which to add a layer of intelligence to the living environment?" 
 
 In this paper the focus will be on answering the aforementioned question, as well as answering several other questions:
 \begin{itemize}
@@ -103,7 +104,7 @@ This paper will begin with a report on literature and field studies performed to
 % =============================================================================
 \section{Related Work}
 % =============================================================================
-This section will focus on the state of the art technology as of this time (2017), as well as the current situation of Elderly care for senior citizens that are living independently or semi-independently in living groups. The first half of this section will illustrate how the care and national budget for this care are managed, what tools are frequently being used and what gaps are currently being encountered. Furthermore we will investigate how independent living groups have developed their own systems for keeping everyone healthy and autonomous. The second half of this section will briefly summarize the current state of the art technology, what advantages they offer the user, and what disadvantages are being encountered.
+%This section will focus on the state of the art technology as of this time (2017), as well as the current situation of Elderly care for senior citizens that are living independently or semi-independently in living groups. The first half of this section will illustrate how the care and national budget for this care are managed, what tools are frequently being used and what gaps are currently being encountered. Furthermore we will investigate how independent living groups have developed their own systems for keeping everyone healthy and autonomous. The second half of this section will briefly summarize the current state of the art technology, what advantages they offer the user, and what disadvantages are being encountered.
 
 
 
@@ -121,16 +122,17 @@ The policy in the Netherlands and other European countries strives to enable eld
 % =============================================================================
 Electronic monitoring of elderly and/or vulnerable citizens is nothing new, there is a myriad of systems available that offer various degrees of support to the user. These vary from wearables that either monitor or aid the user, or both. Take for example the Lechal insoles: "Owned by the India-based company Ducere, Lechal offers a line of smart shoe inserts to help visually impaired wearers more easily navigate the world at large. These smart insoles provide directional assistance in the form of gentle vibrations and phone notifications, giving seniors a greater degree of independence. The associated app also allows for location sharing, letting you keep tabs on your loved one no matter where they are." \footnote{quoted from safewise.com} A simpler solution would be monitoring wearables similar to fitbits, which keep tabs on the user's heart rate and blood pressure, or simply a wearable alarm button which notify emergency services when pressed.
 
-Of course, these are all relatively simple systems focusing on one particular element, but there are also various platforms available on market. In the spring of 2016 Philips introduced CareSensus, a sensor platform created in collaboration with Right At Home, one of America's biggest franchises for  home care services. This system was later deployed in the Netherlands by Cordaan, a major home care institution in Amsterdam, to aid people suffering from dementia. CareSensus proved the potential succes of deploying various sensors in the living environment for health monitoring.
+Of course, these are all relatively simple systems focusing on one particular element, but there are also various platforms available on market. In the spring of 2016 Philips introduced \textbf{CareSensus}, a sensor platform created in collaboration with Right At Home, one of America's biggest franchises for  home care services. This system was later deployed in the Netherlands by Cordaan, a major home care institution in Amsterdam, to aid people suffering from dementia. CareSensus proved the potential succes of deploying various sensors in the living environment for health monitoring.
 
-There are several similar platforms available such as:
+%Voor en nadelen in het algemeen. het moet in hele simpele bewoordingen.
 
-\begin{itemize}
-\item Care@Home van Essence
-\item Sensara
-\item Livind
-\end{itemize}
+%There are several similar platforms available such as:
 
+%\begin{itemize}
+%\item Care@Home van Essence
+%\item Sensara
+%\item Livind
+%\end{itemize}
 
 % =============================================================================
 \section{Pre-design research}
@@ -138,7 +140,12 @@ There are several similar platforms available such as:
 
 \subsection{Stedeborgh}
 
-Before the creation of the prototype we visited Stedeborgh, an independent living community for the elderly, to gather some first hand insights and information. Stedeborgh is an independent living community situated in Grootebroek, the Netherlands.  It is not your standard nursing home; it is for the elderly, by the elderly. The residents live alone or in couples in fully fledged apartments, meaning each apartment has its own kitchen and bathroom as well. The apartments face to the inside of the complex, rather than to the outside, and are connected by an indoor garden featuring tropical foliage and equally tropical temperatures. on the ground floor is a large entertainment hall which is perfect for get-togethers, and a cafeteria for special events. The complex is surrounded by a lovely community garden. What makes Stedeborgh stand out most, however, is the way in which the residents look out for each other.
+Before the creation of the prototype we visited Stedeborgh, an independent living community for the elderly, to gather some first hand insights and information. Stedeborgh is an independent living community situated in Grootebroek, the Netherlands.  It is not your standard nursing home; it is for the elderly, by the elderly. The residents live alone or in couples in fully fledged apartments, meaning each apartment has its own kitchen and bathroom as well. The apartments face to the inside of the complex, rather than to the outside, and are connected by an indoor garden featuring tropical foliage and equally tropical temperatures\ref{fig:stedeborgh}. on the ground floor is a large entertainment hall which is perfect for get-togethers, and a cafeteria for special events. The complex is surrounded by a lovely community garden. What makes Stedeborgh stand out most, however, is the way in which the residents look out for each other.
+\begin{figure}
+\label{fig:stedeborgh}
+\includegraphics[width=0.5\textwidth]{stedeborgh}
+\caption{test}
+\end{figure}
 
 \subsection{Systems}
 The community is maintained by its residents, which means that everyone has a task and responsibilities within the community. A number of systems has been put in place to ensure the safety an wellbeing of the residents. The system that inspired us most was the "asleep/ awake" system. Every apartment has a sign on the door with a sun on one side, and a moon on the other. This sign is turned accordingly whenever the residents go to sleep, and whenever they wake up in the morning. The residents take weekly shifts in which they pass by all the doors in the evening and first thing in the morning. If a sign has not been turned appropriately this could be an indication that something has gone wrong, and the appointed member of the community will check up on their peer immediately. This method, however simple it may be, has proven to be very effective in solving one of the major concerns when it comes to the safety of elderly people living alone; injury by fall. Countless accounts exist of elderly people falling down within their own home, and being unable to get up. In the worst of these cases, the victim may spend days incapacitated on the ground without anyone coming to their aid, sometimes even with death as a result. The system in Stedeborgh ensures that the residents, at the very least, are not without aid for longer than eight hours. 
@@ -150,13 +157,14 @@ As we were inspired by this community's way of life, and the living quality of i
 \section{Focus group}
 % =============================================================================
 
-As part of our research, we conducted a focus group at Stedeborgh among a group of volunteers. The group met in the cafeteria where they were provided with coffee, tea and sweets. We strove to keep the atmosphere as casual and relaxed as possible, to encourage the participants to speak freely and openly about the subject. The participants were introduced to BeLow and, surprisingly enough, did not require too much explanation. Whereas most of the performed desk research concluded that the elderly population of the Netherlands was near phobic of technology, the residents of Stedeborgh proved the contrary: many were already familiar with several systems on market today, and some even owned their own.
+As part of our research, we conducted a focus group at Stedeborgh among a group of volunteers. The group met in the cafeteria where they were provided with coffee, tea and sweets. We strove to keep the atmosphere as casual and relaxed as possible, to encourage the participants to speak freely and openly about the subject. The participants were introduced to us and, surprisingly enough, did not require too much explanation. Whereas most of the performed desk research concluded that the elderly population of the Netherlands was near phobic of technology, the residents of Stedeborgh proved the contrary: many were already familiar with several systems on market today, and some even owned their own.
 
 \subsection{Stigma}
+\label{ref:alarm_button}
  One of the older participants, a lady nearing her 90's, told the group she always had her alarm button with her, attached to her walker. The woman had trouble walking due to bone atrophy, but was still living independently. When asked about the stigma devices such as these carry, she responded casually: "I am an elderly woman, at my age no one should feel ashamed about carrying a device that helps them in case of emergency. You all have your cell phones too, don't you?" She also told us that the device has thus far helped her maintain her autonomy to quite an extend. She has not yet had a falling incident, but she is very well aware of the fact that she is at risk. The alarm button gives her a sense of security that has given her the confidence to continue doing the things she does. Because if she were to fall, she would be able to immediately call for aid. The majority, if not all of the respondents, agreed with her.
 
 \subsection{Monitoring}
-During this first discussion the respondents expressed a clear wish for products such as the one BeLow aimed to develop. We were told that commercial parties had come by several times already to offer their services and products. When asked for the main reason why there was never an investment in these products, the respondents had two very clear reasons. Firstly, the price point; many of these products came with a hefty pricetag. Stedeborgh is an independent community run mainly by its residents, and it simply couldn't afford to spend up to thousands of euros on products that piqued their interest, but had not yet proven their worth to the community's satisfaction. More importantly, however, the respondents stressed the fact that the systems often lacked transparency. Many of the presented solutions made use of cameras, which aroused a sense of uneasiness in the users. One man told us that even though he was ensured that the visual data captured would be analyzed by algorithms rather than people, this did not take away the feeling of being watched. "The word algorithm doesn't give me any idea of what is happening inside," he said half jokingly. "If you tell me an algorithm is analyzing my video feed, you might as well just tell me a midget or a ghost is watching me." Many of the respondents agreed that the systems were not transparent enough, and not only because they were described using terminology which did not resonate with them. Some even went as far as to admit the way the systems were designed made them feel like children being watched. "Most of these systems are made in such a way that they will provide reports about your well being to a caretaker or a doctor. I do not want that. If I am feeling under the weather I would much rather have my daughter calling me to see if I am doing ok than have a nurse rush in to usher me out of bed because I am 'not getting enough exercise'," one of the relatively younger women stated. 
+During this first discussion the respondents expressed a clear wish for products such as the one we aimed to develop. We were told that commercial parties had come by several times already to offer their services and products. When asked for the main reason why there was never an investment in these products, the respondents had two very clear reasons. Firstly, the price point; many of these products came with a hefty pricetag. Stedeborgh is an independent community run mainly by its residents, and it simply couldn't afford to spend up to thousands of euros on products that piqued their interest, but had not yet proven their worth to the community's satisfaction. More importantly, however, the respondents stressed the fact that the systems often lacked transparency. Many of the presented solutions made use of cameras, which aroused a sense of uneasiness in the users. One man told us that even though he was ensured that the visual data captured would be analyzed by algorithms rather than people, this did not take away the feeling of being watched. "The word algorithm doesn't give me any idea of what is happening inside," he said half jokingly. "If you tell me an algorithm is analyzing my video feed, you might as well just tell me a midget or a ghost is watching me." Many of the respondents agreed that the systems were not transparent enough, and not only because they were described using terminology which did not resonate with them. Some even went as far as to admit the way the systems were designed made them feel like children being watched. "Most of these systems are made in such a way that they will provide reports about your well being to a caretaker or a doctor. I do not want that. If I am feeling under the weather I would much rather have my daughter calling me to see if I am doing ok than have a nurse rush in to usher me out of bed because I am 'not getting enough exercise'," one of the relatively younger women stated. 
 
 \begin{figure}
 \center
@@ -171,7 +179,7 @@ Technologie heeft een hele hoop veranderd voor mensen hun dagelijks leven. Appar
 
 %We kennen allemaal de toilet val alarmen waarbij er aan een touwtje getrokken moet worden wanneer iemand ten val komt. 
 % nee die kennen we niet, leg uit
-Tegenwoordig hebben ouderen ook de mogelijkheid een nekhanger te dragen die een alarmknop heeft. 
+Zoals eerder ook al verteld bij \ref{ref:alarm_button} zijn er nu ook alarmen die bij je gedragen kunnen worden die je bereik vergroten.
 % wie heeft dit op de markt gebracht? hoe werkt dit? vermeld de bron
 Dus nu hebben we de beperking van een bepaalde ruimte overwonnen door verbeterde technologieen. Met het sinds 2016 landelijk dekende LoRa netwerk is het nu ook mogelijk een alarmknop overal mee te nemen zonder bang te zijn dat de batterij misschien niet is opgeladen. In het het geval van ouderen is het nog geen gemeengoed dat zij ook een internetverbinding hebben laat staan eentje op zak. Hier komt mogelijk in de toekomst verandering in doordat de generaties van nu opgroeien met internet.
 % Introductie technologie.
@@ -220,7 +228,7 @@ We hebben kunnen achterhalen dat de temperatuur sensor een onrealistisch waarde 
 \begin{figure}[t]
 \centering
 \label{fig:temp}
-\includegraphics[width=1\textwidth]{graph}
+\includegraphics[width=0.5\textwidth]{graph}
 \caption{Temperature graph}
 \end{figure}
 \section{Conclusion}
