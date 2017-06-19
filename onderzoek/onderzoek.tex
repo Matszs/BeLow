@@ -238,15 +238,28 @@ sensor technology was kept relatively simple. The nodes were equipped with a pas
 \draw[fill=blue] (-3.1,2.9) circle (0.3cm);
 \draw[fill=purple] (3.5,-2.6) circle (0.3cm);
 \draw[fill=purple] (-2.5,-1.6) circle (0.3cm);
+\draw[fill=purple] (-3,-4) circle (0.3cm);
+\draw[fill=blue] (-3,-4.7) circle (0.3cm);
+\node[draw,text width=1.2cm] at (-1.5,-4.7) {Gateway};
+\node[draw,text width=1.2cm] at (-1.5,-4) {Sensor};
 \end{tikzpicture}
 \caption{Floorplan of field-test}
 \end{figure}
-
 In the home of one of the respondents three sensor nodes were placed for data acquisition. The nodes were placed strategically to gather the most relevant data. Figure \ref{fig:floorplan} shows the floor plan of the residence in question, as well as where the sensors were placed.
-
+\section{Data analysis}
 \subsection{Sensor data}
-
 One of the main questions concerning the sensor nodes was the battery life, and whether it would be sufficient to allow for prolonged periods of data acquisition. Temperature was measured at a 30 second interval, whereas movement and the opening of doors was measured based on triggers. As the trigger-based sensor nodes will always require less power because they spend the majority of the time in deep sleep modus, the temperature node was used in order to get a realistic view on battery life. Figure  \ref{fig:temp} shows data gathered between 24-5-2017 00:00 and 24-5-2017 12:00. We began measuring on 22-5-2017 with a battery capacity of 2300mah. On 26-5-2017, this was down to 2088mAh, meaning that the system had used 212 mAh over the span of four days, approximating at a usage of  $\pm$ 53 mAh per day.
+
+%In dit onderzoek wilde we achterhalen hoe lang een batterij de sensor node kon voorzien van genoeg stroom om langere periodes data te verzamelen. De data zelf was verzameld met een interval van ongeveer 30 seconden voor wat betreft de temperatuur. Voor wat betreft beweging en deur openingen wordt dit door middel van triggers verzameld. Er wordt in theorie dus niks verbruikt tijdens deze opties. We hebben we alleen de temperatuur sensor gebruikt om de batterij realistisch te kunnen stress testen. De gemeette temperatuur in figuur\ref{fig:temperror} laat data zien van  24-5-2017 00:00 en 24-5-2017 12:00. \\
+
+\begin{figure}
+\centering
+\label{fig:temperror}
+\includegraphics[width=0.5\textwidth]{temperror}
+\caption{Temperature graph with error}
+\end{figure}
+
+In de bovenstaande grafiek is heel duidelijk een meet fout waar te nemen en de schaal waarop de data getoont wordt laat dan ook weinig heel van de details.\\
 
 \begin{figure}
 \centering
@@ -254,6 +267,9 @@ One of the main questions concerning the sensor nodes was the battery life, and 
 \includegraphics[width=0.5\textwidth]{graph}
 \caption{Temperature graph}
 \end{figure}
+
+In deze grafiek is de fout weggefilterd door simpelweg de waardes boven de 100 graden niet mee te rekenen. We hebben niet kunnen achterhalen wat de fout veroorzaakte. Het is wel vreemd dat er ook maar enkele foutwaardes tussen zaten terwijl we hadden verwacht dat dit de hele nacht door zou zijn gegaan. 
+
 \begin{figure}
 \centering
 \label{fig:doorsensor}
