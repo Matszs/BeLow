@@ -28,7 +28,6 @@
 }
 
 
-% Paper metadata (use plain text, for PDF inclusion and later re-using, if desired)
 \def\plaintitle{A standard for Home monitoring}
 \def\plainauthor{Patrick Hendriks; Mats Otten; Suzanne Peerdeman}
 \def\plainkeywords{Ambient environment; Elderly care; Healthcare technology}
@@ -84,6 +83,7 @@ For the past several years, the changing demographic in the Netherlands has rais
 \centering
 \includegraphics[width=0.5\textwidth]{cbs_household_age_report}
 \caption[Translated graph]{Translated graph from CBS\footnotemark }
+\label{fig:cbs}
 \end{figure}
 \footnotetext{Central bureau of statistics of the Netherlands}
 The products available are also specifically targeted at an elderly audience, even though they would be able to cater a much more diverse group of users. Therefore, the goal of BeLow is to lay the foundation for a portable living lab; a standard kit that can be used by anyone, even those with minimal technical experience, and that can be expanded upon by those that wish to do so.
@@ -95,11 +95,9 @@ In this paper the focus will be on answering the aforementioned question, as wel
 \item What monitoring systems are currently on the market, and what knowledge is available?
 \item  What are the wishes of the target audience when it comes to improvement of living quality using technology?
 \item How can the needs of the target audience be satisfied using technology.
-% Weet niet of we deze in de huidige vorm zo zouden moeten laten staan. De 3 punten erboven vind ik beter aansluiten. \item How does one become a standard?
 \end{itemize}
-%hieronder wordt nu geplaat over first two and second half. zin moet vanwege hierboven dan ook aangepast.
+
 This paper will begin with a report on literature and field studies performed to answer the first two of these questions. The third part will consist of reports on experiments and tests performed using prototypes. 
-%Finally, we will look to the future and, based on interviews with experts on the subject, discuss how technology may develop in the years to come and how this can be of use to society as a whole.
 
 
 % =============================================================================
@@ -107,13 +105,11 @@ This paper will begin with a report on literature and field studies performed to
 % =============================================================================
 %This section will focus on the state of the art technology as of this time (2017), as well as the current situation of Elderly care for senior citizens that are living independently or semi-independently in living groups. The first half of this section will illustrate how the care and national budget for this care are managed, what tools are frequently being used and what gaps are currently being encountered. Furthermore we will investigate how independent living groups have developed their own systems for keeping everyone healthy and autonomous. The second half of this section will briefly summarize the current state of the art technology, what advantages they offer the user, and what disadvantages are being encountered.
 
-
-
 % =============================================================================
 \subsection{Care for independent senior citizens}
 % =============================================================================
 
-A surprisingly big misconception when it comes to innovation aimed specifically at the elderly community, is that this is an audience that, as a whole, wants roughly the same thing; all share similar fears, weaknesses and requirements. In reality, however, there exists a myriad of different people all with different abilities and disabilities. Some are physical, such as bone atrophy, or mental, such as dementia or a combination of the two resulting from a stroke. [Reitenbach and Schot, 2012]  As of 2015, the government of the Netherlands has aimed to reform the long-term care for the elderly in such a way that more responsibility is given to the able citizen. This changes the nature of the long-term care program to that of a package of care and support which the active population, using their own resources, can call upon in order to maintain their autonomy and age with dignity.[Campen, Iedema, Broese van Groenau and Deeg, 2017]
+A surprisingly big misconception when it comes to innovation aimed specifically at the elderly community, is that this is an audience that, as a whole, wants roughly the same thing; all share similar fears, weaknesses and requirements. In reality, however, there exists a myriad of different people all with different abilities and disabilities. Some are physical, such as bone atrophy, or mental, such as dementia or a combination of the two resulting from a stroke\cite{waag}. As of 2015, the government of the Netherlands has aimed to reform the long-term care for the elderly in such a way that more responsibility is given to the able citizen. This changes the nature of the long-term care program to that of a package of care and support which the active population, using their own resources, can call upon in order to maintain their autonomy and age with dignity\cite{langerzelfstandig}.
 
 The policy in the Netherlands and other European countries strives to enable elderly citizens to grow old in their own home and/or neighbourhood (aging in place) by use of their own resources and a package for care and welfare facilities. \cite{thomas_blanchard} Despite the best efforts of fellow citizens and caregivers however, this method does not always suffice and, more importantly, does not give the loved ones of the elderly citizens in question peace of mind. This is where electronic monitoring systems get to play their part.
 
@@ -125,15 +121,6 @@ Electronic monitoring of elderly and/or vulnerable citizens is nothing new, ther
 
 Of course, these are all relatively simple systems focusing on one particular element, but there are also various platforms available on market. In the spring of 2016 Philips introduced \textbf{CareSensus}, a sensor platform created in collaboration with Right At Home, one of America's biggest franchises for  home care services. This system was later deployed in the Netherlands by Cordaan, a major home care institution in Amsterdam, to aid people suffering from dementia. CareSensus proved the potential succes of deploying various sensors in the living environment for health monitoring. Another similar solution is Sensara. Placing second in 2014's Game Changer Award, Sensara is another monitoring system focusing specifically on users in early to advanced stages of dementia. The system keeps track of the user's activity; specifically whether or not the user gets out of bed in the morning, how often the user leaves their house and whether or not they return. In case of an emergency, mantle care will be alerted. Care@Home by Essence offers a line of products that include voice and fall recognition, and send an alert out to emergency services if the system deems it necessary.Another system, Livind, analyses the user's behaviour and will send a text message to mantle care in case of deviation. The list goes on and on.  
 
-%Voor en nadelen in het algemeen. het moet in hele simpele bewoordingen.
-
-%There are several similar platforms available such as:
-
-%\begin{itemize}
-%\item Care@Home van Essence
-%\item Sensara
-%\item Livind
-%\end{itemize}
 
 % =============================================================================
 \section{Pre-design research}
@@ -141,13 +128,13 @@ Of course, these are all relatively simple systems focusing on one particular el
 
 \subsection{Stedeborgh}
 
-Before the creation of the prototype we visited Stedeborgh, an independent living community for the elderly, to gather some first hand insights and information. Stedeborgh is an independent living community situated in Grootebroek, the Netherlands.  It is not your standard nursing home; it is for the elderly, by the elderly. The residents live alone or in couples in fully fledged apartments, meaning each apartment has its own kitchen and bathroom as well. The apartments face to the inside of the complex, rather than to the outside, and are connected by an indoor garden featuring tropical foliage and equally tropical temperatures\ref{fig:stedeborgh}. on the ground floor is a large entertainment hall which is perfect for get-togethers, and a cafeteria for special events. The complex is surrounded by a lovely community garden. What makes Stedeborgh stand out most, however, is the way in which the residents look out for each other.\\
+Before the creation of the prototype we visited Stedeborgh, an independent living community for the elderly, to gather some first hand insights and information. Stedeborgh is an independent living community situated in Grootebroek, the Netherlands.  It is not your standard nursing home; it is for the elderly, by the elderly. The residents live alone or in couples in fully fledged apartments, meaning each apartment has its own kitchen and bathroom as well. The apartments face to the inside of the complex, rather than to the outside, and are connected by an indoor garden featuring tropical foliage and equally tropical temperatures \ref{fig:stedeborgh}. on the ground floor is a large entertainment hall which is perfect for get-togethers, and a cafeteria for special events. The complex is surrounded by a lovely community garden. What makes Stedeborgh stand out most, however, is the way in which the residents look out for each other.\\
 \vspace{0.2cm}
 \begin{figure}
 \centering
-\label{fig:stedeborgh}
 \includegraphics[width=0.45\textwidth]{stedeborgh}
 \caption{Stedeborgh courtyard}
+\label{fig:stedeborgh}
 \end{figure}
 
 \subsection{Systems}
@@ -173,9 +160,9 @@ During this first discussion the respondents expressed a clear wish for products
 
 \begin{figure}
 \centering
-\label{fig:interview}
 \includegraphics[width=0.5\textwidth]{interview}
 \caption{Interview Group}
+\label{fig:interview}
 \end{figure}
 
 %==============================================================================
@@ -193,10 +180,10 @@ The advance of technology does not move equally fast everywhere, however. It qui
 Because of LoRa's restrictions when it comes to message frequency, only the gateway uses LoRa for communication. The nodes communicate with the gateway through Bluetooth low energy. This relatively new incarnation of Bluetooth consumes minimal power, which is of the utmost importance because the nodes are battery powered. To conserve energy the nodes remain in deep sleep mode until they receive input from one of their  'trigger' sensors. These are the sensors that indicate that the user is in the room and that data should be recorded. the node will then broadcast its acquired data to the gateway, which filters it and prepares it for LoRa transmission. These complex tasks are not performed by the nodes in order to conserve energy.  
 
 \begin{figure}
-\label{fig:process}
 \centering
 \includegraphics[scale=0.6]{dataproces.pdf}
 \caption{Schematic of the data collection process}
+\label{fig:process}
 \end{figure}
 
 \subsection{Open standards}
@@ -212,9 +199,9 @@ The ultimate goal when developing the prototype, is to see whether or not soluti
 
 \begin{figure}
 \centering
-\label{fig:dikw}
 \includegraphics[width=0.4\textwidth]{dikw}
 \caption{Data Information Knowledge Wisdom model}
+\label{fig:dikw}
 \end{figure}
 
 % =============================================================================
@@ -222,16 +209,15 @@ The ultimate goal when developing the prototype, is to see whether or not soluti
 % =============================================================================
 The prototype was focused around scalability, meaning that sensors could quickly be added and removed without the need for tools. The main controller used, the Sodaq Autonomo, and its compatible Grove shield enabled this. The Grove modules created by Sodaq made it possible to entertain a plug-and-play approach, so that the prototype could we adjusted whenever needed. 
 \begin{figure}
-\label{fig:sodaq}
 \includegraphics[width=0.5\textwidth]{sodaq}
 \caption{Sodaq prototype}
+\label{fig:sodaq}
 \end{figure}
 sensor technology was kept relatively simple. The nodes were equipped with a passive infrared sensor, a light sensor, a temperature sensor, and an optional magnetic door sensor to monitor the opening of doors and windows. Each respondent was then supplied with a single gateway and two nodes that were to be strategically placed in their living area. The group of respondents consisted of elderly couples, single elderly people, and students. During this phase, emphasis was on the functionality of the system, and making the data available to the users. 
 
 \subsection{Room monitoring}
 
 \begin{figure}
-\label{fig:floorplan}
 \begin{tikzpicture}
 \node[inner sep=0pt] (russell) at (0,0)
     {\includegraphics[width=0.5\textwidth]{floorplan.png}};
@@ -245,37 +231,36 @@ sensor technology was kept relatively simple. The nodes were equipped with a pas
 \node[draw,text width=1.2cm] at (-1.5,-4) {Sensor};
 \end{tikzpicture}
 \caption{Floorplan of field-test}
+\label{fig:floorplan}
 \end{figure}
 In the home of one of the respondents three sensor nodes were placed for data acquisition. The nodes were placed strategically to gather the most relevant data. Figure \ref{fig:floorplan} shows the floor plan of the residence in question, as well as where the sensors were placed.
 
 \subsection{Sensor data}
 One of the main questions concerning the sensor nodes was the battery life, and whether it would be sufficient to allow for prolonged periods of data acquisition. Temperature was measured at a 30 second interval, whereas movement and the opening of doors was measured based on triggers. As the trigger-based sensor nodes will always require less power because they spend the majority of the time in deep sleep modus, the temperature node was used in order to get a realistic view on battery life. Figure  \ref{fig:temp} shows data gathered between 24-5-2017 00:00 and 24-5-2017 12:00. We began measuring on 22-5-2017 with a battery capacity of 2300mah. On 26-5-2017, this was down to 2088mAh, meaning that the system had used 212 mAh over the span of four days, approximating at a usage of  $\pm$ 53 mAh per day.
 
-%In dit onderzoek wilde we achterhalen hoe lang een batterij de sensor node kon voorzien van genoeg stroom om langere periodes data te verzamelen. De data zelf was verzameld met een interval van ongeveer 30 seconden voor wat betreft de temperatuur. Voor wat betreft beweging en deur openingen wordt dit door middel van triggers verzameld. Er wordt in theorie dus niks verbruikt tijdens deze opties. We hebben we alleen de temperatuur sensor gebruikt om de batterij realistisch te kunnen stress testen. De gemeette temperatuur in figuur\ref{fig:temperror} laat data zien van  24-5-2017 00:00 en 24-5-2017 12:00. \\
-
 \begin{figure}
 \centering
-\label{fig:temperror}
 \includegraphics[width=0.5\textwidth]{temperror}
 \caption{Temperature graph with error}
+\label{fig:temperror}
 \end{figure}
 
 In figure Figure \ref{fig:temperror} we can see there is a large spike caused by a malfunction in the sensor. Because of this spike, nearly all details in the figure are lost.
 
 \begin{figure}
 \centering
-\label{fig:temp}
 \includegraphics[width=0.5\textwidth]{graph}
 \caption{Temperature graph}
+\label{fig:temp}
 \end{figure}
 
 Figure Figure \ref{fig:temp} contains the same graph, but with the spike filtered out. We have done this by filtering out all unrealistic temperature in- and decreases. We were unable to discover what caused the error. Strangely, there was only this one spike, while one would expect the sensor to malfunction more than once in a case like this.
 
 \begin{figure}
 \centering
-\label{fig:doorsensor}
 \includegraphics[width=0.5\textwidth]{doorsensor}
 \caption{Door sensor recordings}
+\label{fig:doorsensor}
 \end{figure}
 
 Finally, figure Figure \ref{fig:doorsensor} 
@@ -286,10 +271,7 @@ Finally, figure Figure \ref{fig:doorsensor}
 \section{Conclusion}
 %==============================================================================
 As the demographic in the Netherlands continues to change, each generation finds itself responsible for the wellbeing of the one before it. The rise of technology may offer some relief, be it done in the right way. The rising demand in systems supporting the elderly in their autonomy and wellbeing has caused many to lose sight of the wishes of the target audience itself. The systems are shaped after the needs and wishes of those giving care to the elderly, and focus on a group of people with diminished cognitive abilities as a result of dementia and other neurological disabilities. In the pursuit of unburdening those that supply care, the needs of those that wish to receive care are foregone. Within the population, there exists a large group that does not need to be constantly looked after, but instead wishes for a system that will support them, and assist them in their time of need. Rather than a monitoring system, focus needs to be on creating an ambient environment that will not only watch and alert, but interact with the user and add intelligence to the living environment. This will in time create a symbiosis between man and machine that allows the user to remain independent for as long as possible, without the fear of having a decline in health or a calamity go unnoticed.
-%\subsection{Security}
-%In het onderzoek in alleen gekeken naar de functionele requirements die bij een monitoring systeem komen kijken. We hebben gedacht aan security maar gekozen om dit in het prototype niet te verwerken vanwege de beperkte duur van het onderzoek en beveiliging moet goed geïmplementeerd worden en is geen klus die zo even geklaard wordt. blablabla WIP\ldots
-%\subsection{Two way communication}
-%Doordat er via LoRa maar een beperkt aantal berichten per dag verstuurd mogen worden, en LoRa zich minder goed leent voor twee weg communicatie is een 3g of 4g modem wellicht een betere keuze.
+
 \balance
 \bibliographystyle{acm-sigchi}
 \bibliography{refs}
