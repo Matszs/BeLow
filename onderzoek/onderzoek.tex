@@ -178,17 +178,6 @@ During this first discussion the respondents expressed a clear wish for products
 \caption{Interview Group}
 \end{figure}
 
-% =============================================================================
-\section{Practical testing}
-% =============================================================================
-The prototype was focused around scalability, meaning that sensors could quickly be added and removed without the need for tools. The main controller used, the Sodaq Autonomo, and its compatible Grove shield enabled this. The Grove modules created by Sodaq made it possible to entertain a plug-and-play approach, so that the prototype could we adjusted whenever needed. 
-\begin{figure}
-\label{fig:sodaq}
-\includegraphics[width=0.5\textwidth]{sodaq}
-\caption{Sodaq prototype}
-\end{figure}
-sensor technology was kept relatively simple. The nodes were equipped with a passive infrared sensor, a light sensor, a temperature sensor, and an optional magnetig door sensor to monitor the opening of doors and windows. Each respondent was then supplied with a single gateway and two nodes that were to be strategically placed in their living area. The group of respondents consisted of elderly couples, single elderly people, and students. % Hier moet wat meer verzonnen detail in...
-
 %==============================================================================
 \section{Technology}
 %==============================================================================
@@ -227,8 +216,18 @@ The ultimate goal when developing the prototype, is to see whether or not soluti
 \includegraphics[width=0.4\textwidth]{dikw}
 \caption{Data Information Knowledge Wisdom model}
 \end{figure}
-\section{What we have done}
-In dit onderzoek zijn we uitgegaan van een technologische oplossing die voornamelijk familie en verzorgers op de hoogte houdt wanneer er iets (mogelijk) fout gaat. Wat we wilden bereiken is dat mensen zelf de touwtjes in handen krijgen
+
+% =============================================================================
+\section{Practical testing}
+% =============================================================================
+The prototype was focused around scalability, meaning that sensors could quickly be added and removed without the need for tools. The main controller used, the Sodaq Autonomo, and its compatible Grove shield enabled this. The Grove modules created by Sodaq made it possible to entertain a plug-and-play approach, so that the prototype could we adjusted whenever needed. 
+\begin{figure}
+\label{fig:sodaq}
+\includegraphics[width=0.5\textwidth]{sodaq}
+\caption{Sodaq prototype}
+\end{figure}
+sensor technology was kept relatively simple. The nodes were equipped with a passive infrared sensor, a light sensor, a temperature sensor, and an optional magnetic door sensor to monitor the opening of doors and windows. Each respondent was then supplied with a single gateway and two nodes that were to be strategically placed in their living area. The group of respondents consisted of elderly couples, single elderly people, and students. During this phase, emphasis was on the functionality of the system, and making the data available to the users. 
+
 \subsection{Room monitoring}
 \begin{figure}
 \label{fig:floorplan}
@@ -242,12 +241,12 @@ In dit onderzoek zijn we uitgegaan van een technologische oplossing die voorname
 \end{tikzpicture}
 \caption{Floorplan of field-test}
 \end{figure}
-In de woning van 1 van onze testpersonen hebben we 3 sensors gebruikt die data verzamelde. De sensoren waren op een strategische plek geplaatst om de meest interessante data te bemachtigen. Bij figuur \ref{fig:floorplan} is de indeling van de woning te zien en daarnaast is aangegeven waar in de woning de sensoren geplaatst zijn.
 
-\section{Data analysis}
+In the home of one of the respondents three sensor nodes were placed for data acquisition. The nodes were placed strategically to gather the most relevant data. Figure \ref{fig:floorplan} shows the floor plan of the residence in question, as well as where the sensors were placed.
+
 \subsection{Sensor data}
-In dit onderzoek wilde we achterhalen hoe lang een batterij de sensor node kon voorzien van genoeg stroom om langere periodes data te verzamelen. De data zelf was verzameld met een interval van ongeveer 30 seconden voor wat betreft de temperatuur. Voor wat betreft beweging en deur openingen wordt dit door middel van triggers verzameld. Er wordt in theorie dus niks verbruikt tijdens deze opties. We hebben we alleen de temperatuur sensor gebruikt om de batterij realistisch te kunnen stress testen. De gemeette temperatuur in figuur\ref{fig:temp} laat data zien van  24-5-2017 00:00 en 24-5-2017 12:00.
-We hebben kunnen achterhalen dat de temperatuur sensor een onrealistisch waarde heeft gemeten en achterwege gelaten. We begonnen 22-5-2017 met een batterij capaciteit van 2300mah en 26-5-2017 was het nog 2088 mah. Dat betekend dat we slecht een verbruik hebben van 212 mAh over 4 dagen en per dag komen we uit op $\pm$ 53 mAh 
+
+One of the main questions concerning the sensor nodes was the battery life, and whether it would be sufficient to allow for prolonged periods of data acquisition. Temperature was measured at a 30 second interval, whereas movement and the opening of doors was measured based on triggers. As the trigger-based sensor nodes will always require less power because they spend the majority of the time in deep sleep modus, the temperature node was used in order to get a realistic view on battery life. Figure  \ref{fig:temp} shows data gathered between 24-5-2017 00:00 and 24-5-2017 12:00. We began measuring on 22-5-2017 with a battery capacity of 2300mah. On 26-5-2017, this was down to 2088mAh, meaning that the system had used 212 mAh over the span of four days, approximating at a usage of  $\pm$ 53 mAh per day.
 
 \begin{figure}
 \centering
