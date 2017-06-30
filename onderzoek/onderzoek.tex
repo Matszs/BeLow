@@ -213,13 +213,13 @@ The ultimate goal when developing the prototype, is for solutions that are curre
 % =============================================================================
 \section{Practical testing}
 % =============================================================================
-The prototype was focused around scalability, meaning that sensors could quickly be added and removed without the need for tools. The main controller used, the Sodaq Autonomo, and its compatible Grove shield enabled this. The Grove modules created by Sodaq made it possible to entertain a plug-and-play approach, so that the prototype could we adjusted whenever needed. 
+The prototype was focused around scalability, meaning that sensors could quickly be added and removed without the need for tools. The main controller used, the Sodaq Autonomo, and its compatible Grove shield enabled this. The Grove modules created by Sodaq made it possible to entertain a plug-and-play approach for developers, so that the prototype could we adjusted whenever needed. 
 \begin{figure}
 \includegraphics[width=0.5\textwidth]{sodaq}
 \caption{Sodaq prototype}
 \label{fig:sodaq}
 \end{figure}
-sensor technology was kept relatively simple. The nodes were equipped with a passive infrared sensor, a light sensor, a temperature sensor, and an optional magnetic door sensor to monitor the opening of doors and windows. Each respondent was then supplied with a single gateway and two nodes that were to be strategically placed in their living area. The group of respondents consisted of elderly couples, single elderly people, and students. During this phase, emphasis was on the functionality of the system, and making the data available to the users. 
+The sensor technology was kept relatively simple. The nodes were equipped with a light sensor, a temperature sensor, and an optional magnetic door sensor to monitor the opening of doors and windows. Each respondent was then supplied with a single gateway and two nodes that were to be strategically placed in their living area. The group of respondents consisted of elderly couples, single elderly people, and students. During this phase, emphasis was on the functionality of the system, and making the data available to the users. 
 
 \subsection{Room monitoring}
 
@@ -244,14 +244,16 @@ In the home of one of the respondents three sensor nodes were placed for data ac
 \subsection{Sensor data}
 One of the main questions concerning the sensor nodes was the battery life, and whether it would be sufficient to allow for prolonged periods of data acquisition. Temperature was measured at a 30 second interval, whereas movement and the opening of doors was measured based on triggers. As the trigger-based sensor nodes will always require less power because they spend the majority of the time in deep sleep modus, the temperature node was used in order to get a realistic view on battery life. Figure  \ref{fig:temp} shows data gathered between 24-5-2017 00:00 and 24-5-2017 12:00. We began measuring on 22-5-2017 with a battery capacity of 2300mah. On 26-5-2017, this was down to 2088mAh, meaning that the system had used 212 mAh over the span of four days, approximating at a usage of  $\pm$ 53 mAh per day.
 
+In  Figure \ref{fig:temperror} we can see there is a large spike caused by a malfunction in the sensor. Because of this spike, nearly all details in the figure are lost.
+
+Figure  \ref{fig:temp} contains the same graph, but with the spike filtered out. We have done this by filtering out all unrealistic temperature in- and decreases. We were unable to discover what caused the error. Strangely, there was only this one spike, while one would expect the sensor to malfunction more than once in a case like this.
+
 \begin{figure}
 \centering
 \includegraphics[width=0.5\textwidth]{temperror}
 \caption{Temperature graph with error}
 \label{fig:temperror}
 \end{figure}
-
-In  Figure \ref{fig:temperror} we can see there is a large spike caused by a malfunction in the sensor. Because of this spike, nearly all details in the figure are lost.
 
 \begin{figure}
 \centering
@@ -260,7 +262,7 @@ In  Figure \ref{fig:temperror} we can see there is a large spike caused by a mal
 \label{fig:temp}
 \end{figure}
 
-Figure  \ref{fig:temp} contains the same graph, but with the spike filtered out. We have done this by filtering out all unrealistic temperature in- and decreases. We were unable to discover what caused the error. Strangely, there was only this one spike, while one would expect the sensor to malfunction more than once in a case like this.
+Finally, Figure \ref{fig:doorsensor} shows data from a door sensor linked to one of the doors within one of the buildings of the Amsterdam University of Applied Sciences, and clearly shows the activity in that particular hallway throughout the day. This is an essential tool for the monitoring of in-home activity, as it serves as a checkpoint that the user passes through during their daily routines.
 
 \begin{figure}
 \centering
@@ -268,8 +270,6 @@ Figure  \ref{fig:temp} contains the same graph, but with the spike filtered out.
 \caption{Door sensor recordings}
 \label{fig:doorsensor}
 \end{figure}
-
-Finally, Figure \ref{fig:doorsensor} shows data from a door sensor linked to one of the doors within one of the buildings of the Amsterdam University of Applied Sciences, and clearly shows the activity in that particular hallway throughout the day. This is an essential tool for the monitoring of in-home activity, as it serves as a checkpoint that the user passes through during their daily routines.
 
 %==============================================================================
 \section{Discussion}
