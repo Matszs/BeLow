@@ -1,6 +1,6 @@
-#define IS_GATEWAY 1 // 1 == gateway | 0 == node
+#define IS_GATEWAY 0 // 1 == gateway | 0 == node
 #include "platform.h"
-#define SENSOR_TYPE (IS_GATEWAY ? GATEWAY : TEMPERATURE_SENSOR)
+#define SENSOR_TYPE (IS_GATEWAY ? GATEWAY : DOOR_SENSOR)
 
 #define ONE_WIRE_BUS 4 // temperature sensor
 unsigned long timer = 0;
@@ -101,7 +101,7 @@ void loop() {
         ble_set_major(11111);
     
         ble_start_advertising();
-        delay(5000);
+        delay(10000);
         ble_stop_advertising();
         delay(3000);
       }
@@ -139,10 +139,10 @@ void loop() {
       ble_set_major(ldrValue);
       
       ble_start_advertising();
-      delay(5000);
+      delay(10000);
       ble_stop_advertising();
   
-      delay(60000);
+      delay(2000);
     }
     break;
 
